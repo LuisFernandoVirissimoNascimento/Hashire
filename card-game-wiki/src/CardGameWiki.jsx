@@ -58,18 +58,46 @@ export const GAME_META = {
   ]
 };
 
+const TYPE_ICONS = {
+  speed: {
+    icon: '/cards/speed.png',
+    ring: 'border-sky-400/70 bg-sky-950/60',
+    label: 'Speed'
+  },
+  stamina: {
+    icon: '/cards/stamina.png',
+    ring: 'border-rose-400/70 bg-rose-950/60',
+    label: 'Stamina'
+  },
+  power: {
+    icon: '/cards/power.png',
+    ring: 'border-amber-400/70 bg-amber-950/60',
+    label: 'Power'
+  },
+  guts: {
+    icon: '/cards/guts.png',
+    ring: 'border-pink-400/70 bg-pink-950/60',
+    label: 'Guts'
+  },
+  wits: {
+    icon: '/cards/wits.png',
+    ring: 'border-emerald-400/70 bg-emerald-950/60',
+    label: 'Wits'
+  }
+};
+
 export const KEYWORDS = [
   {
     id: 'vanguard',
     name: 'Vanguard',
     type: 'Static',
     reminderText:
-      'Opponents must target or block this unit first if able when declaring attacks or single-target unit spells.',
+      'Opponents must target or block this unit first if able when declaring attacks or single-target unit Staminas.',
     rulesExplanation:
-      'Vanguard creates a combat and targeting priority lock while the unit is stationed in the Frontline Zone. As long as you control at least one ready or exhausted unit with Vanguard, opposing attackers cannot bypass it to strike your Commander directly, and single-target opposing spells that can legally target a unit must choose a Vanguard unit if one is legal.',
+      'Vanguard creates a combat and targeting priority lock while the unit is stationed in the Frontline Zone. As long as you control at least one ready or exhausted unit with Vanguard, opposing attackers cannot bypass it to strike your Commander directly, and single-target opposing Staminas that can legally target a unit must choose a Vanguard unit if one is legal.',
     edgeCases: [
       'If you control multiple units with Vanguard, the opposing player chooses which Vanguard unit to attack or target.',
-      'Vanguard does not force opponents to target the unit with spells that explicitly specify "non-Vanguard" or target non-unit permanents like Artifacts.',
+      'Vanguard does not force opponents to target the unit with Staminas that explicitly specify "non-Vanguard" or target non-unit permanents like Powers.',
       'If a Vanguard unit is placed in the Astral Zone or loses its abilities, the targeting restriction ends immediately.'
     ]
   },
@@ -78,13 +106,13 @@ export const KEYWORDS = [
     name: 'Surge',
     type: 'Triggered',
     reminderText:
-      'Triggers an additional bonus effect if you have cast at least one other spell earlier this turn.',
+      'Triggers an additional bonus effect if you have cast at least one other Stamina earlier this turn.',
     rulesExplanation:
-      'Surge checks the turn history at the exact moment a card is played or enters the battlefield. If the controller has already cast one or more Spell cards during the current turn (regardless of whether those spells resolved or were countered), the Surge clause activates and resolves immediately after the card’s primary effect.',
+      'Surge checks the turn history at the exact moment a card is played or enters the battlefield. If the controller has already cast one or more Stamina cards during the current turn (regardless of whether those Staminas resolved or were countered), the Surge clause activates and resolves immediately after the card’s primary effect.',
     edgeCases: [
-      'Playing a Unit, Artifact, or Resource card does not count toward activating Surge—only Spell cards increment your Surge count.',
-      'A spell with Surge does not count itself; you must have cast a different spell earlier in the same turn.',
-      'Copies of spells created on the stack are not "cast" and therefore do not trigger Surge.'
+      'Playing a Unit, Power, or Guts card does not count toward activating Surge—only Stamina cards increment your Surge count.',
+      'A Stamina with Surge does not count itself; you must have cast a different Stamina earlier in the same turn.',
+      'Copies of Staminas created on the stack are not "cast" and therefore do not trigger Surge.'
     ]
   },
   {
@@ -92,11 +120,11 @@ export const KEYWORDS = [
     name: 'Ward',
     type: 'Static',
     reminderText:
-      'Opponents must pay 2 additional Aether whenever they target this permanent with a spell or activated ability.',
+      'Opponents must pay 2 additional Aether whenever they target this permanent with a Stamina or activated ability.',
     rulesExplanation:
-      'Ward is a protective tax applied during the cost-payment step of casting a spell or activating an ability. Whenever an opponent selects a permanent with Ward as one or more targets, the total Aether cost increases by 2 for each Ward permanent targeted. If the opponent cannot or refuses to pay the extra Aether, the targeting action is illegal and reversed.',
+      'Ward is a protective tax applied during the cost-payment step of casting a Stamina or activating an ability. Whenever an opponent selects a permanent with Ward as one or more targets, the total Aether cost increases by 2 for each Ward permanent targeted. If the opponent cannot or refuses to pay the extra Aether, the targeting action is illegal and reversed.',
     edgeCases: [
-      'Area-of-effect spells that do not use the word "target" (such as "Deal 2 damage to all units") bypass Ward completely.',
+      'Area-of-effect Staminas that do not use the word "target" (such as "Deal 2 damage to all units") bypass Ward completely.',
       'Multiple instances of Ward on the same permanent stack cumulatively (e.g., two instances of Ward require 4 extra Aether).',
       'Ward does not tax the permanent’s controller—you can target your own Ward units freely.'
     ]
@@ -104,14 +132,14 @@ export const KEYWORDS = [
   {
     id: 'shatter',
     name: 'Shatter',
-    type: 'Spell Mechanic',
+    type: 'Stamina Mechanic',
     reminderText:
-      'Destroy target Artifact, or remove all Shield counters and Ward buffs from target Unit.',
+      'Destroy target Power, or remove all Shield counters and Ward buffs from target Unit.',
     rulesExplanation:
-      'Shatter is a modal destructive keyword found primarily on Ruin and Void spells or assassins. When resolving a Shatter effect, choose an eligible Artifact or Unit. If an Artifact is chosen, it is immediately destroyed and sent to its owner’s Scrapyard. If a Unit is chosen, all Shield counters and Ward abilities granted to it until end of turn are stripped away.',
+      'Shatter is a modal destructive keyword found primarily on Ruin and Void Staminas or assassins. When resolving a Shatter effect, choose an eligible Power or Unit. If an Power is chosen, it is immediately destroyed and sent to its owner’s Scrapyard. If a Unit is chosen, all Shield counters and Ward abilities granted to it until end of turn are stripped away.',
     edgeCases: [
-      'Stripping Ward with Shatter still requires you to pay the unit’s Ward cost when initially targeting it with the Shatter spell.',
-      'Shatter can target an Artifact even if it has Indestructible; however, Indestructible prevents destruction while still triggering "when targeted" abilities.',
+      'Stripping Ward with Shatter still requires you to pay the unit’s Ward cost when initially targeting it with the Shatter Stamina.',
+      'Shatter can target an Power even if it has Indestructible; however, Indestructible prevents destruction while still triggering "when targeted" abilities.',
       'If a Unit has zero Shield counters and no Ward, it is still a legal target for Shatter to trigger secondary effects.'
     ]
   },
@@ -122,7 +150,7 @@ export const KEYWORDS = [
     reminderText:
       'Pay the listed Aether cost and exhaust this permanent during your Main Phase to trigger its overloaded system.',
     rulesExplanation:
-      'Overclock represents pushing an Artifact or Resource conduit beyond safe limits. You may activate an Overclock ability at sorcery speed during your Main Phase if the permanent is currently ready (unexhausted) and you can pay its listed Overclock Aether cost. Exhausting the permanent is part of the activation cost.',
+      'Overclock represents pushing an Power or Guts conduit beyond safe limits. You may activate an Overclock ability at sorcery speed during your Main Phase if the permanent is currently ready (unexhausted) and you can pay its listed Overclock Aether cost. Exhausting the permanent is part of the activation cost.',
     edgeCases: [
       'Units with Overclock cannot activate Overclock on the same turn they enter play unless they have Haste.',
       'Because exhausting is paid as a cost, opponents cannot respond by exhausting the permanent to stop an Overclock already on the stack.',
@@ -147,51 +175,34 @@ export const KEYWORDS = [
 
 export const CARDS = [
   {
-    slug: 'solaris-shieldbearer',
-    name: 'Solaris Shieldbearer',
+    slug: 'aston-machan',
+    name: 'Aston Machan',
     type: 'Speed',
-    subtype: 'Human Knight',
-    faction: 'Solaris Enclave',
-    cost: 2,
-    attack: 2,
-    health: 4,
-    rarity: 'Common',
-    set: 'Shattered Meridian',
-    setCode: 'SHM',
-    collectorNumber: '014/180',
-    artist: 'Elena Vance',
-    featured: true,
-    keywords: ['Vanguard', 'Ward'],
+    rarity: 'R',
+    image: '/cards/aston_machan_R.png',
+    collectorNumber: '001',
+    keywords: [],
     cardText:
-      'Vanguard, Ward\nWhenever Solaris Shieldbearer blocks an attacking Unit, it gains +0/+2 until the end of the Combat Phase.',
+      'Frontrunner, Mid\n+25 Speed\n Sem Skill',
+    cardActionText:
+      '**Coroa da Machan**\n__Correndo de Front Runner:__\n**Sempre no Mid:** +2 Casas - Dispara sozinha no 1° turno do mid (ao passar 1/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +2 Casas\n**Caiu no Early ou no Late:** +1 Casa',
     flavorText:
-      '"Let the sky-storms break upon our towers; not a single shard of the Enclave shall fall while my bulwark stands."',
+      '"Não esqueça dela."',
     rulings: [
       {
         question:
-          'Does Solaris Shieldbearer receive the +0/+2 bonus before combat damage is calculated?',
+          'Exemplo de Pergunta Frequente',
         answer:
-          'Yes. The triggered ability resolves during the Declare Blockers step, increasing its Health to 6 before damage is dealt in the Combat Damage step.'
-      },
-      {
-        question:
-          'If an opponent targets Solaris Shieldbearer with a 1-cost spell, how much total Aether must they pay?',
-        answer:
-          'They must pay 3 Aether total (1 base cost + 2 from Ward).'
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
       }
     ],
     interactionNotes:
-      'Pairs naturally with Resonance Lattice to stack multiple instances of Ward on a high-health frontline blocker.',
+      'Use essa carta para ganhar vantagem no Mid, e se possível, use ela junto com cartas que aumentem a velocidade do Mid.',
     patchHistory: [
       {
-        version: 'v1.4.2',
-        date: '2026-10-15',
-        note: 'Base Health increased from 3 to 4 to reinforce Solaris defensive openings.'
-      },
-      {
-        version: 'v1.0.0',
-        date: '2026-06-01',
-        note: 'Released in Shattered Meridian.'
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
       }
     ],
     artConfig: {
@@ -202,350 +213,345 @@ export const CARDS = [
     }
   },
   {
-    slug: 'arc-conduit-weaver',
-    name: 'Arc-Conduit Weaver',
+    slug: 'biko-pegasus',
+    name: 'Biko Pegasus',
     type: 'Speed',
-    subtype: 'Aetherborn Mage',
-    faction: 'Aetherwright Guild',
-    cost: 3,
-    attack: 3,
-    health: 2,
-    rarity: 'Uncommon',
-    set: 'Shattered Meridian',
-    setCode: 'SHM',
-    collectorNumber: '042/180',
-    artist: 'Kenji Takahashi',
-    featured: true,
-    keywords: ['Surge', 'Chronoshift'],
+    rarity: 'R',
+    image: '/cards/biko_pegasus_R.png',
+    collectorNumber: '002',
+    keywords: [],
     cardText:
-      'Chronoshift\nSurge — When Arc-Conduit Weaver enters the battlefield, draw 1 card and banish the top card of your deck to the Astral Zone until your next turn.',
+      'End Closer, Early\n+25 Speed\n Sem Skill',
+    cardActionText:
+      '**Voo de Pégaso**\n__Correndo de End Closer:__\n**Sempre no Early:** +2 Face Máxima - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Face Máxima\n**Caiu no Mid ou no Late:** +1 Casa',
     flavorText:
-      '"Time is merely raw copper wire to an Aetherwright—bend the loop, and tomorrow pays for today."',
+      '" "',
     rulings: [
       {
         question:
-          'If I cast Arc-Conduit Weaver after casting a 1-cost Spell this turn, does Surge trigger?',
+          'Exemplo de Pergunta Frequente',
         answer:
-          'Yes. Even though Arc-Conduit Weaver is a Unit, its Surge ability checks whether you cast a Spell earlier in the same turn.'
-      },
-      {
-        question:
-          'What happens if the card banished by its Surge ability also has Chronoshift?',
-        answer:
-          'That banished card’s Chronoshift ability will immediately trigger upon entering the Astral Zone!'
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
       }
     ],
     interactionNotes:
-      'One of the primary value engines in tempo-combo decks utilizing Chronos Astrolabe.',
+      'Use essa carta para ganhar vantagem no Early, e se possível, use ela junto com cartas que aumentem a velocidade do Early.',
     patchHistory: [
       {
-        version: 'v1.2.0',
-        date: '2026-08-12',
-        note: 'Clarified wording on the Astral Zone duration to specify "until your next turn".'
-      },
-      {
-        version: 'v1.0.0',
-        date: '2026-06-01',
-        note: 'Released in Shattered Meridian.'
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
       }
     ],
     artConfig: {
-      primaryColor: '#06b6d4',
-      secondaryColor: '#cffafe',
-      accentColor: '#0284c7',
-      motif: 'vortex'
+      primaryColor: '#f59e0b',
+      secondaryColor: '#fef3c7',
+      accentColor: '#d97706',
+      motif: 'shield'
     }
   },
   {
-    slug: 'cataclysmic-fracture',
-    name: 'Cataclysmic Fracture',
-    type: 'Spell',
-    subtype: 'Ruin Sorcery',
-    faction: 'Voidwalkers',
-    cost: 4,
-    attack: null,
-    health: null,
-    rarity: 'Rare',
-    set: 'Shattered Meridian',
-    setCode: 'SHM',
-    collectorNumber: '118/180',
-    artist: 'Mireille Laurent',
-    featured: true,
-    keywords: ['Shatter', 'Surge'],
+    slug: 'satono_diamond',
+    name: 'Satono Diamond',
+    type: 'Stamina',
+    rarity: 'R',
+    image: '/cards/satono_diamond_R.png',
+    collectorNumber: '003',
+    keywords: [],
     cardText:
-      'Shatter\nDeal 3 damage to target Unit or Commander.\nSurge — Instead, Shatter up to two targets and deal 4 damage to each Unit controlled by the defending player.',
+      'Late Surger, End Closer, Mid\n+25 Stamina\n Sem Skill',
+    cardActionText:
+      '**Brilho de Diamante**\n__Correndo de Late Surger ou End Closer:__\n**Sempre no Mid:** +1 Face Mínima e +1 Casa por 2 Turnos - Dispara sozinha no 1° turno do mid (ao passar de 1/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +1 Face Mínima e +1 Casa por 2 Turnos\n**Caiu no Early ou no Late:** +1 Face Mínima.',
     flavorText:
-      '"Where the Meridian cracked, gravity forgot its oath and iron turned to ash."',
+      '"Você é meu treinador agora, não resista!"',
     rulings: [
       {
         question:
-          'Can I cast Cataclysmic Fracture if there are no Artifacts in play?',
+          'Exemplo de Pergunta Frequente',
         answer:
-          'Yes. Shatter can legally target any Unit or Artifact. You may target the same Unit with both the Shatter effect and the 3 damage.'
-      },
-      {
-        question:
-          'When Surge is active, does the 4 damage to all opposing Units bypass Ward?',
-        answer:
-          'Yes, because dealing 4 damage to "each Unit controlled by the defending player" does not target those units. However, the two Shatter targets still require paying Ward if applicable.'
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
       }
     ],
     interactionNotes:
-      'Premier board-sweeper against Solaris Enclave Ward/Artifact boards when sequenced after a cheap cantrip spell.',
+      ' ',
     patchHistory: [
       {
-        version: 'v1.4.2',
-        date: '2026-10-15',
-        note: 'Updated Shatter ruling interaction so Ward is stripped prior to damage resolution.'
-      },
-      {
-        version: 'v1.1.0',
-        date: '2026-07-04',
-        note: 'Cost adjusted from 5 to 4 Aether.'
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
       }
     ],
     artConfig: {
-      primaryColor: '#a855f7',
-      secondaryColor: '#f3e8ff',
-      accentColor: '#7e22ce',
-      motif: 'fracture'
+      primaryColor: '#f59e0b',
+      secondaryColor: '#fef3c7',
+      accentColor: '#d97706',
+      motif: 'shield'
     }
   },
   {
-    slug: 'chronos-astrolabe',
-    name: 'Chronos Astrolabe',
-    type: 'Artifact',
-    subtype: 'Astral Relic',
-    faction: 'Aetherwright Guild',
-    cost: 2,
-    attack: null,
-    health: null,
-    rarity: 'Rare',
-    set: 'Shattered Meridian',
-    setCode: 'SHM',
-    collectorNumber: '089/180',
-    artist: 'Soren Lindqvist',
-    featured: true,
-    keywords: ['Overclock', 'Chronoshift'],
+    slug: 'zenno_rob_roy',
+    name: 'Zenno Rob Roy',
+    type: 'Stamina',
+    rarity: 'R',
+    image: '/cards/zenno_rob_roy_R.png',
+    collectorNumber: '004',
+    keywords: [],
     cardText:
-      'Chronoshift\nOverclock 1 — Banish target friendly Unit to the Astral Zone, then return it to the battlefield at the start of the End Phase.',
+      'Front Runner, Late\n+25 Stamina\n Sem Skill',
+    cardActionText:
+      '**Leitura de Ritmo**\n__Correndo de Front Runner:__\n**Sempre no Late:** +1 Casa por 2 Turnos - Dispara sozinha no 1° turno do late (ao passar de 4/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +1 Casa por 2 Turnos\n**Caiu no Mid ou no Early:** +1 Casa',
     flavorText:
-      '"Align the three brass rings with the twin moons, and step sideways out of harm’s reach."',
+      '" "',
     rulings: [
       {
         question:
-          'If I use Overclock 1 to banish a unit with Chronoshift, how many times does Chronoshift trigger?',
+          'Exemplo de Pergunta Frequente',
         answer:
-          'Twice: once immediately when the unit enters the Astral Zone, and a second time at the start of the End Phase when it returns to the battlefield.'
-      },
-      {
-        question:
-          'Can Chronos Astrolabe banish itself with its own Overclock ability?',
-        answer:
-          'No. The ability specifies "target friendly Unit", and Chronos Astrolabe is an Artifact.'
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
       }
     ],
     interactionNotes:
-      'Protects key units from targeted removal while double-triggering enter-the-battlefield and Chronoshift abilities.',
+      '',
     patchHistory: [
       {
-        version: 'v1.0.0',
-        date: '2026-06-01',
-        note: 'Released in Shattered Meridian.'
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
       }
     ],
     artConfig: {
-      primaryColor: '#38bdf8',
-      secondaryColor: '#e0f2fe',
-      accentColor: '#0369a1',
-      motif: 'astrolabe'
+      primaryColor: '#f59e0b',
+      secondaryColor: '#fef3c7',
+      accentColor: '#d97706',
+      motif: 'shield'
     }
   },
   {
-    slug: 'valkyrie-of-the-zenith',
-    name: 'Valkyrie of the Zenith',
-    type: 'Speed',
-    subtype: 'Seraph Construct',
-    faction: 'Solaris Enclave',
-    cost: 6,
-    attack: 5,
-    health: 5,
-    rarity: 'Legendary',
-    set: 'Shattered Meridian',
-    setCode: 'SHM',
-    collectorNumber: '001/180',
-    artist: 'Elena Vance',
-    featured: false,
-    keywords: ['Vanguard', 'Ward', 'Surge'],
+    slug: 'yaeno_muteki',
+    name: 'Yaeno Muteki',
+    type: 'Power',
+    rarity: 'R',
+    image: '/cards/yaeno_muteki_R.png',
+    collectorNumber: '005',
+    keywords: [],
     cardText:
-      'Vanguard, Ward\nAll other friendly Units gain +1/+1.\nSurge — Valkyrie of the Zenith enters the battlefield with two Shield counters and readies all friendly Units.',
+      'Pace Chaser, Late\n+25 Power\n Sem Skill',
+    cardActionText:
+      '**Golpe Invencível**\n__Correndo de Pace Chaser:__\n**Sempre no Late:** +1 Face Mínima e +1 Casa - Dispara sozinha no 1° turno do late (ao passar de 4/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +1 Face Mínima e +1 Casa\n**Caiu no Mid ou no Early:** +1 Face Mínima',
     flavorText:
-      '"Forged from fallen starlight and cathedral brass, she descends only when the horizon itself catches fire."',
+      '" "',
     rulings: [
       {
         question:
-          'How do Shield counters interact with incoming damage on Valkyrie of the Zenith?',
+          'Exemplo de Pergunta Frequente',
         answer:
-          'Whenever a Unit with one or more Shield counters would take damage or be destroyed, remove a Shield counter from it instead.'
-      },
-      {
-        question:
-          'Does Valkyrie of the Zenith give itself +1/+1?',
-        answer:
-          'No, the static buff states "All other friendly Units gain +1/+1."'
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
       }
     ],
     interactionNotes:
-      'Flagship Legendary finisher of the Solaris Enclave; extremely difficult to remove without a Surge-empowered Shatter effect.',
+      '',
     patchHistory: [
       {
-        version: 'v1.3.0',
-        date: '2026-09-18',
-        note: 'Surge bonus changed from three Shield counters to two Shield counters plus readying friendly Units.'
-      },
-      {
-        version: 'v1.0.0',
-        date: '2026-06-01',
-        note: 'Released in Shattered Meridian as card #001.'
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
       }
     ],
     artConfig: {
-      primaryColor: '#fbbf24',
-      secondaryColor: '#fef9c3',
-      accentColor: '#b45309',
-      motif: 'valkyrie'
+      primaryColor: '#f59e0b',
+      secondaryColor: '#fef3c7',
+      accentColor: '#d97706',
+      motif: 'shield'
     }
   },
   {
-    slug: 'null-blade-infiltrator',
-    name: 'Null-Blade Infiltrator',
-    type: 'Speed',
-    subtype: 'Void Assassin',
-    faction: 'Voidwalkers',
-    cost: 3,
-    attack: 4,
-    health: 1,
-    rarity: 'Uncommon',
-    set: 'Shattered Meridian',
-    setCode: 'SHM',
-    collectorNumber: '107/180',
-    artist: 'Darius Thorne',
-    featured: false,
-    keywords: ['Chronoshift', 'Shatter'],
+    slug: 'bamboo_memory',
+    name: 'Bamboo Memory',
+    type: 'Power',
+    rarity: 'R',
+    image: '/cards/bamboo_memory_R.png',
+    collectorNumber: '006',
+    keywords: [],
     cardText:
-      'Chronoshift\nWhen Null-Blade Infiltrator deals combat damage to an opposing Commander, trigger Shatter on up to one target Artifact or Unit.',
+      'Late Surger, Early\n+25 Power\n Sem Skill',
+    cardActionText:
+      '**Disciplina Total**\n__Correndo de Late Surger:__\n**Sempre no Early:** +1 Face Máxima e +1 Casa - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Face Máxima e +1 Casa\n**Caiu no Mid ou no Late:** +1 Face Máxima',
     flavorText:
-      '"She steps through the seam between heartbeats, leaving only severed wards and silent alarms."',
+      '" "',
     rulings: [
       {
         question:
-          'If Null-Blade Infiltrator is blocked by a Vanguard unit, does its Shatter ability trigger?',
+          'Exemplo de Pergunta Frequente',
         answer:
-          'No. Its ability triggers only when it deals combat damage directly to an opposing Commander.'
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
       }
     ],
     interactionNotes:
-      'High-attack aggressive threat that punishes unguarded Commanders and generates Scry/Aether value if banished.',
+      '',
     patchHistory: [
       {
-        version: 'v1.0.0',
-        date: '2026-06-01',
-        note: 'Released in Shattered Meridian.'
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
       }
     ],
     artConfig: {
-      primaryColor: '#c084fc',
-      secondaryColor: '#fae8ff',
-      accentColor: '#6b21a8',
-      motif: 'blade'
+      primaryColor: '#f59e0b',
+      secondaryColor: '#fef3c7',
+      accentColor: '#d97706',
+      motif: 'shield'
     }
   },
   {
-    slug: 'resonance-lattice',
-    name: 'Resonance Lattice',
-    type: 'Artifact',
-    subtype: 'Harmonic Matrix',
-    faction: 'Solaris Enclave',
-    cost: 1,
-    attack: null,
-    health: null,
-    rarity: 'Common',
-    set: 'Shattered Meridian',
-    setCode: 'SHM',
-    collectorNumber: '027/180',
-    artist: 'Soren Lindqvist',
-    featured: false,
-    keywords: ['Ward', 'Overclock'],
+    slug: 'matikanetannhauser',
+    name: 'Matikanetannhauser',
+    type: 'Guts',
+    rarity: 'R',
+    image: '/cards/matikanetannhauser_R.png',
+    collectorNumber: '007',
+    keywords: [],
     cardText:
-      'Ward\nOverclock 1 — Target friendly Unit gains Ward until the start of your next turn.',
+      'Late Surger, Early\n+25 Power\n Sem Skill',
+    cardActionText:
+      '**Disciplina Total**\n__Correndo de Late Surger:__\n**Sempre no Early:** +1 Face Máxima e +1 Casa - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Face Máxima e +1 Casa\n**Caiu no Mid ou no Late:** +1 Face Máxima',
     flavorText:
-      '"Every prism hums at the frequency of the Sun-Spire, weaving an invisible lattice over the garrison."',
+      '" "',
     rulings: [
       {
         question:
-          'Can I use Resonance Lattice on a Unit that already has Ward?',
+          'Exemplo de Pergunta Frequente',
         answer:
-          'Yes! Instances of Ward stack, increasing the opponent’s targeting tax from 2 Aether to 4 Aether.'
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
       }
     ],
     interactionNotes:
-      'Low-cost utility Artifact that protects itself with Ward while taxing opponent removal.',
+      '',
     patchHistory: [
       {
-        version: 'v1.0.0',
-        date: '2026-06-01',
-        note: 'Released in Shattered Meridian.'
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
       }
     ],
     artConfig: {
-      primaryColor: '#eab308',
-      secondaryColor: '#fef08a',
-      accentColor: '#a16207',
-      motif: 'lattice'
+      primaryColor: '#f59e0b',
+      secondaryColor: '#fef3c7',
+      accentColor: '#d97706',
+      motif: 'shield'
     }
   },
   {
-    slug: 'aether-nexus-spire',
-    name: 'Aether Nexus Spire',
-    type: 'Resource',
-    subtype: 'Celestial Conduit',
-    faction: 'Neutral',
-    cost: 0,
-    attack: null,
-    health: null,
-    rarity: 'Common',
-    set: 'Shattered Meridian',
-    setCode: 'SHM',
-    collectorNumber: '165/180',
-    artist: 'Kenji Takahashi',
-    featured: false,
-    keywords: ['Overclock'],
+    slug: 'winning_ticket',
+    name: 'Winning Ticket',
+    type: 'Guts',
+    rarity: 'R',
+    image: '/cards/winning_ticket_R.png',
+    collectorNumber: '008',
+    keywords: [],
     cardText:
-      'Exhaust: Add 1 Aether of any Faction to your pool.\nOverclock 2 — Add 2 Aether and look at the top card of your deck.',
+      'Late Surger, Early\n+25 Power\n Sem Skill',
+    cardActionText:
+      '**Disciplina Total**\n__Correndo de Late Surger:__\n**Sempre no Early:** +1 Face Máxima e +1 Casa - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Face Máxima e +1 Casa\n**Caiu no Mid ou no Late:** +1 Face Máxima',
     flavorText:
-      '"Anchored to the floating bedrock of the Meridian, these spires drink raw lightning from the upper atmosphere."',
+      '" "',
     rulings: [
       {
         question:
-          'Does Overclock 2 net positive Aether if I pay 2 Aether to activate it?',
+          'Exemplo de Pergunta Frequente',
         answer:
-          'Overclock 2 converts 2 generic or temporary Aether into 2 Faction-aligned Aether while providing top-deck filtering. It is especially strong when fueled by temporary Aether from Chronoshift.'
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
       }
     ],
     interactionNotes:
-      'Essential multi-faction Resource conduit that converts temporary Chronoshift Aether into filtered draws.',
+      '',
     patchHistory: [
       {
-        version: 'v1.0.0',
-        date: '2026-06-01',
-        note: 'Released in Shattered Meridian.'
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
       }
     ],
     artConfig: {
-      primaryColor: '#10b981',
-      secondaryColor: '#d1fae5',
-      accentColor: '#047857',
-      motif: 'spire'
+      primaryColor: '#f59e0b',
+      secondaryColor: '#fef3c7',
+      accentColor: '#d97706',
+      motif: 'shield'
+    }
+  },
+  {
+    slug: 'matikanefukukitaru',
+    name: 'Matikanefukukitaru',
+    type: 'Wits',
+    rarity: 'R',
+    image: '/cards/matikanefukukitaru_R.png',
+    collectorNumber: '009',
+    keywords: [],
+    cardText:
+      'Late Surger, Early\n+25 Power\n Sem Skill',
+    cardActionText:
+      '**Disciplina Total**\n__Correndo de Late Surger:__\n**Sempre no Early:** +1 Face Máxima e +1 Casa - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Face Máxima e +1 Casa\n**Caiu no Mid ou no Late:** +1 Face Máxima',
+    flavorText:
+      '" "',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ],
+    artConfig: {
+      primaryColor: '#f59e0b',
+      secondaryColor: '#fef3c7',
+      accentColor: '#d97706',
+      motif: 'shield'
+    }
+  },
+  {
+    slug: 'ikuno_dictus',
+    name: 'Ikuno Dictus',
+    type: 'Wits',
+    rarity: 'R',
+    image: '/cards/ikuno_dictus_R.png',
+    collectorNumber: '010',
+    keywords: [],
+    cardText:
+      'Late Surger, Early\n+25 Power\n Sem Skill',
+    cardActionText:
+      '**Disciplina Total**\n__Correndo de Late Surger:__\n**Sempre no Early:** +1 Face Máxima e +1 Casa - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Face Máxima e +1 Casa\n**Caiu no Mid ou no Late:** +1 Face Máxima',
+    flavorText:
+      '" "',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ],
+    artConfig: {
+      primaryColor: '#f59e0b',
+      secondaryColor: '#fef3c7',
+      accentColor: '#d97706',
+      motif: 'shield'
     }
   }
 ];
@@ -556,7 +562,7 @@ export const RULES = {
     summary:
       'Reduce the opposing Commander’s Life total from 25 to 0, or force your opponent to attempt to draw from an empty Main Deck.',
     details: [
-      'Each player begins the match with 25 Commander Life and a 40-card Main Deck plus a 10-card Resource Conduit Deck.',
+      'Each player begins the match with 25 Commander Life and a 40-card Main Deck plus a 10-card Guts Conduit Deck.',
       'If both Commanders reach 0 Life simultaneously during the resolution of a single effect, the match ends in a Draw.',
       'A player immediately loses the match as a state-based action if they must draw a card while their Main Deck contains 0 cards.'
     ]
@@ -566,7 +572,7 @@ export const RULES = {
       step: 1,
       title: 'Present Decks & Roll for Initiative',
       description:
-        'Each player shuffles their 40-card Main Deck and 10-card Resource Deck separately. Determine the starting player via a random roll; the winner chooses whether to play first or second.'
+        'Each player shuffles their 40-card Main Deck and 10-card Guts Deck separately. Determine the starting player via a random roll; the winner chooses whether to play first or second.'
     },
     {
       step: 2,
@@ -582,9 +588,9 @@ export const RULES = {
     },
     {
       step: 4,
-      title: 'Deploy Initial Resource Conduit',
+      title: 'Deploy Initial Guts Conduit',
       description:
-        'Before Turn 1 begins, both players reveal the top card of their Resource Deck and place it into their Conduit Zone ready.'
+        'Before Turn 1 begins, both players reveal the top card of their Guts Deck and place it into their Conduit Zone ready.'
     }
   ],
   phases: [
@@ -592,14 +598,14 @@ export const RULES = {
       id: 'start',
       number: '01',
       name: 'Start Phase',
-      shortDesc: 'Ready all exhausted permanents, deploy a Resource, and resolve start-of-turn triggers.',
+      shortDesc: 'Ready all exhausted permanents, deploy a Guts, and resolve start-of-turn triggers.',
       substeps: [
-        'Ready Step: Simultaneously ready (unexhaust) all Units, Artifacts, and Resource Conduits you control.',
-        'Conduit Step: Deploy the top card of your Resource Deck into your Conduit Zone (up to a maximum of 10 Conduits).',
+        'Ready Step: Simultaneously ready (unexhaust) all Units, Powers, and Guts Conduits you control.',
+        'Conduit Step: Deploy the top card of your Guts Deck into your Conduit Zone (up to a maximum of 10 Conduits).',
         'Upkeep Step: All "At the start of your turn" triggered abilities are placed on the stack and resolved in active-player order.'
       ],
       priorityNote:
-        'Players receive priority to cast Instant-speed spells after Upkeep triggers are placed on the stack.'
+        'Players receive priority to cast Instant-speed Staminas after Upkeep triggers are placed on the stack.'
     },
     {
       id: 'draw',
@@ -618,11 +624,11 @@ export const RULES = {
       id: 'main',
       number: '03',
       name: 'Main Phase',
-      shortDesc: 'Play Units, Artifacts, and Sorcery/Instant Spells, and activate Overclock abilities.',
+      shortDesc: 'Play Units, Powers, and Sorcery/Instant Staminas, and activate Overclock abilities.',
       substeps: [
-        'Play Cards: Spend Aether from your Conduits to deploy Units to the Frontline, place Artifacts in the Support Row, or cast Spells.',
+        'Play Cards: Spend Aether from your Conduits to deploy Units to the Frontline, place Powers in the Support Row, or cast Staminas.',
         'Activate Abilities: Activate Overclock and other abilities on permanents you control.',
-        'Sequence Surge: Cast low-cost spells early in the Main Phase to unlock Surge bonuses on subsequent cards.'
+        'Sequence Surge: Cast low-cost Staminas early in the Main Phase to unlock Surge bonuses on subsequent cards.'
       ],
       priorityNote:
         'Active player holds full sorcery-speed priority whenever the stack is empty.'
@@ -635,7 +641,7 @@ export const RULES = {
       substeps: [
         'Declare Attackers: Exhaust any number of ready Units (that do not have summoning sickness) and assign them to attack the opposing Commander or an exhausted opposing Unit.',
         'Declare Blockers: The defending player assigns ready Units to block attackers. If the defender controls a ready Vanguard unit, at least one attacker must be blocked by a Vanguard unit.',
-        'Combat Trick Window: Both players may cast Instant spells or activate combat abilities.',
+        'Combat Trick Window: Both players may cast Instant Staminas or activate combat abilities.',
         'Damage Resolution: Attackers and blockers deal damage equal to their Attack simultaneously. Units with damage equal to or exceeding their Health are destroyed.'
       ],
       priorityNote:
@@ -659,12 +665,12 @@ export const RULES = {
     {
       title: 'Main Deck Size',
       value: 'Exactly 40 Cards',
-      detail: 'Must contain Units, Spells, and Artifacts. Resource cards belong exclusively in the Resource Deck.'
+      detail: 'Must contain Units, Staminas, and Powers. Guts cards belong exclusively in the Guts Deck.'
     },
     {
-      title: 'Resource Deck Size',
+      title: 'Guts Deck Size',
       value: '10 Cards',
-      detail: 'Separate 10-card deck of Resource Conduits. One is deployed automatically during each Start Phase.'
+      detail: 'Separate 10-card deck of Guts Conduits. One is deployed automatically during each Start Phase.'
     },
     {
       title: 'Card Copy Limit',
@@ -683,30 +689,30 @@ export const RULES = {
 // 2. STYLING HELPERS & RARITY / FACTION MAPS
 // ============================================================================
 
+const RARITY_ICONS = {
+  R: '/cards/r_rarity.png',
+  SR: '/cards/sr_rarity.png',
+  SSR: '/cards/ssr_rarity.png'
+};
+
 const RARITY_STYLES = {
-  Common: {
-    badge: 'bg-zinc-800 text-zinc-200 border-zinc-700',
-    dot: 'bg-zinc-400',
-    border: 'border-zinc-700/80',
-    glow: 'shadow-none'
+  R: {
+    border: 'border-zinc-500/70',
+    glow: 'shadow-zinc-500/10',
+    badge: 'bg-zinc-800/90 text-zinc-200 border-zinc-600/70',
+    dot: 'bg-zinc-400'
   },
-  Uncommon: {
-    badge: 'bg-emerald-950/80 text-emerald-300 border-emerald-700/60',
-    dot: 'bg-emerald-400',
-    border: 'border-emerald-600/50',
-    glow: 'shadow-[0_0_24px_-6px_rgba(16,185,129,0.25)]'
+  SR: {
+    border: 'border-amber-400/80',
+    glow: 'shadow-amber-500/15',
+    badge: 'bg-amber-950/80 text-amber-300 border-amber-500/60',
+    dot: 'bg-amber-400'
   },
-  Rare: {
-    badge: 'bg-amber-950/80 text-amber-300 border-amber-600/60',
-    dot: 'bg-amber-400',
-    border: 'border-amber-500/60',
-    glow: 'shadow-[0_0_28px_-6px_rgba(245,158,11,0.3)]'
-  },
-  Legendary: {
-    badge: 'bg-purple-950/90 text-purple-200 border-purple-500/70',
-    dot: 'bg-gradient-to-r from-amber-400 to-purple-400',
-    border: 'border-purple-500/70',
-    glow: 'shadow-[0_0_32px_-4px_rgba(168,85,247,0.38)]'
+  SSR: {
+    border: 'border-fuchsia-400/80',
+    glow: 'shadow-fuchsia-500/20',
+    badge: 'bg-fuchsia-950/80 text-fuchsia-300 border-fuchsia-500/60',
+    dot: 'bg-fuchsia-400'
   }
 };
 
@@ -714,7 +720,7 @@ const MECHANIC_TYPE_STYLES = {
   Static: 'bg-sky-950/80 text-sky-300 border-sky-700/60',
   Triggered: 'bg-amber-950/80 text-amber-300 border-amber-700/60',
   Activated: 'bg-emerald-950/80 text-emerald-300 border-emerald-700/60',
-  'Spell Mechanic': 'bg-purple-950/80 text-purple-300 border-purple-700/60'
+  'Stamina Mechanic': 'bg-purple-950/80 text-purple-300 border-purple-700/60'
 };
 
 const FACTION_ACCENTS = {
@@ -918,8 +924,39 @@ function CardArtSvg({ card }) {
   );
 }
 
+function FormattedText({ text }) {
+  if (!text) return null;
+
+  const parts = text.split(/(\*\*[^*]+\*\*|__[^_]+__)/g);
+
+  return (
+    <span className="whitespace-pre-line">
+      {parts.map((part, i) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+          return (
+            <strong key={i} className="font-bold text-zinc-100">
+              {part.slice(2, -2)}
+            </strong>
+          );
+        }
+        if (part.startsWith('__') && part.endsWith('__')) {
+          return (
+            <span key={i} className="underline underline-offset-2 decoration-zinc-400">
+              {part.slice(2, -2)}
+            </span>
+          );
+        }
+        return part;
+      })}
+    </span>
+  );
+}
+
 function CardFrameIllustration({ card, compact = false }) {
-  const rarityStyle = RARITY_STYLES[card.rarity] || RARITY_STYLES.Common;
+  const rarityKey = card.rarity?.toUpperCase();
+  const rarityIcon = RARITY_ICONS[rarityKey];
+  const rarityStyle = RARITY_STYLES[rarityKey] || RARITY_STYLES.R;
+  const typeInfo = TYPE_ICONS[card.type?.toLowerCase()];
 
   return (
     <div
@@ -931,26 +968,52 @@ function CardFrameIllustration({ card, compact = false }) {
           {card.name}
         </span>
         <span
-          className="shrink-0 w-6 h-6 rounded-full bg-zinc-950 border border-cyan-500/60 text-cyan-300 font-mono text-xs font-bold flex items-center justify-center shadow-inner"
-          title={`Cost: ${card.cost} Aether`}
+          className={`shrink-0 w-8 h-8 flex items-center justify-center ${
+            typeInfo ? '' : 'text-zinc-300 font-mono text-xs font-bold'
+          }`}
+          title={`Tipo: ${typeInfo ? typeInfo.label : card.type}`}
         >
-          {card.cost}
+          {typeInfo ? (
+            <img
+              src={typeInfo.icon}
+              alt={typeInfo.label}
+              className="w-7 h-7 object-contain"
+            />
+          ) : (
+            card.type
+          )}
         </span>
       </div>
 
       {/* Art Frame */}
-      <div className={`relative w-full ${compact ? 'h-32' : 'h-44 sm:h-48'} bg-zinc-950 overflow-hidden`}>
-        <CardArtSvg card={card} />
-      </div>
+        <div className="relative w-full aspect-[3/4] bg-zinc-950 overflow-hidden">
+          {card.image ? (
+            <img
+              src={card.image}
+              alt={card.name}
+              className="w-full h-full object-cover object-top"
+            />
+          ) : (
+            <CardArtSvg card={card} />
+          )}
+        </div>
 
       {/* Type & Rarity Strip */}
       <div className="px-3 py-1.5 bg-zinc-900 border-y border-zinc-800 flex items-center justify-between gap-2 text-[11px]">
         <span className="text-zinc-300 font-medium truncate">
-          {card.type} — {card.subtype}
+          {card.type}
         </span>
-        <span className={`px-1.5 py-0.5 rounded border text-[10px] font-semibold uppercase tracking-wider ${rarityStyle.badge}`}>
-          {card.rarity}
-        </span>
+        {rarityIcon ? (
+          <img
+            src={rarityIcon}
+            alt={rarityKey}
+            className="h-5 w-auto object-contain shrink-0"
+          />
+        ) : (
+          <span className={`px-1.5 py-0.5 rounded border text-[10px] font-semibold uppercase tracking-wider ${rarityStyle.badge}`}>
+            {card.rarity}
+          </span>
+        )}
       </div>
 
       {/* Card Rules Preview Box */}
@@ -965,7 +1028,7 @@ function CardFrameIllustration({ card, compact = false }) {
             {card.faction}
           </span>
 
-          {card.type === 'Speed' ? (
+          {card.type === 'W' ? (
             <div className="flex items-center gap-1.5 font-mono font-bold">
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-rose-950/80 border border-rose-700/60 text-rose-300">
                 <Sword className="w-3 h-3" />
@@ -1014,81 +1077,116 @@ function InteractiveCardText({ text, onJumpToKeyword }) {
   }, []);
 
   const pattern = useMemo(() => {
+    if (!KEYWORDS.length) return null;
     const names = KEYWORDS.map((k) => k.name).join('|');
     return new RegExp(`\\b(${names})\\b`, 'gi');
   }, []);
 
+  if (!text) return null;
+
+  const renderKeywords = (segment, keyPrefix) => {
+    if (!pattern) return segment;
+
+    const parts = segment.split(pattern);
+    return parts.map((part, partIdx) => {
+      const matchedKw = keywordMap[part.toLowerCase()];
+      if (!matchedKw) {
+        return <React.Fragment key={`${keyPrefix}-${partIdx}`}>{part}</React.Fragment>;
+      }
+
+      const tokenKey = `${keyPrefix}-${partIdx}-${matchedKw.id}`;
+      const isOpen = openKeywordId === tokenKey;
+
+      return (
+        <span
+          key={tokenKey}
+          className="relative inline-block mx-0.5"
+          onMouseEnter={() => setOpenKeywordId(tokenKey)}
+          onMouseLeave={() => setOpenKeywordId(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setOpenKeywordId(isOpen ? null : tokenKey)}
+            className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-cyan-950/80 hover:bg-cyan-900/90 text-cyan-300 border border-cyan-700/70 font-semibold text-xs sm:text-sm transition-colors cursor-pointer align-baseline"
+            aria-expanded={isOpen}
+          >
+            <Sparkles className="w-3 h-3 text-cyan-400 shrink-0" />
+            {part}
+          </button>
+
+          {isOpen && (
+            <span
+              role="tooltip"
+              className="block z-30 absolute left-0 top-full mt-2 w-72 sm:w-80 p-3.5 rounded-xl bg-zinc-900 border border-zinc-700 shadow-2xl text-left"
+            >
+              <span className="flex items-center justify-between gap-2 mb-1.5">
+                <span className="font-bold text-zinc-100 text-sm flex items-center gap-1.5">
+                  {matchedKw.name}
+                </span>
+                <span
+                  className={`text-[10px] font-mono uppercase px-1.5 py-0.5 rounded border ${
+                    MECHANIC_TYPE_STYLES[matchedKw.type] || 'bg-zinc-800 text-zinc-300 border-zinc-700'
+                  }`}
+                >
+                  {matchedKw.type}
+                </span>
+              </span>
+              <span className="block text-xs italic text-zinc-400 mb-2">
+                {matchedKw.reminderText}
+              </span>
+              <span className="block text-xs text-zinc-300 leading-relaxed mb-3">
+                {matchedKw.rulesExplanation}
+              </span>
+              <button
+                type="button"
+                onClick={() => {
+                  setOpenKeywordId(null);
+                  onJumpToKeyword(matchedKw.id);
+                }}
+                className="w-full inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/40 text-cyan-300 text-xs font-medium transition-colors cursor-pointer"
+              >
+                View in Keyword Glossary
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </span>
+          )}
+        </span>
+      );
+    });
+  };
+
   const lines = text.split('\n');
 
   return (
-    <div ref={containerRef} className="space-y-3 text-sm sm:text-base text-zinc-200 leading-relaxed">
+    <div ref={containerRef} className="space-y-2 text-sm sm:text-base text-zinc-200 leading-relaxed">
       {lines.map((line, lineIdx) => {
-        const parts = line.split(pattern);
+        const formattedParts = line.split(/(\*\*[^*]+\*\*|__[^_]+__)/g);
+
         return (
-          <p key={lineIdx} className="leading-7">
-            {parts.map((part, partIdx) => {
-              const matchedKw = keywordMap[part.toLowerCase()];
-              if (!matchedKw) {
-                return <React.Fragment key={partIdx}>{part}</React.Fragment>;
+          <p key={lineIdx} className="leading-7 min-h-[1.75rem]">
+            {formattedParts.map((part, fmtIdx) => {
+              const keyPrefix = `${lineIdx}-${fmtIdx}`;
+
+              if (part.startsWith('**') && part.endsWith('**')) {
+                return (
+                  <strong key={keyPrefix} className="font-bold text-white">
+                    {renderKeywords(part.slice(2, -2), keyPrefix)}
+                  </strong>
+                );
               }
 
-              const tokenKey = `${lineIdx}-${partIdx}-${matchedKw.id}`;
-              const isOpen = openKeywordId === tokenKey;
+              if (part.startsWith('__') && part.endsWith('__')) {
+                return (
+                  <span key={keyPrefix} className="underline underline-offset-4 decoration-zinc-400">
+                    {renderKeywords(part.slice(2, -2), keyPrefix)}
+                  </span>
+                );
+              }
 
               return (
-                <span
-                  key={tokenKey}
-                  className="relative inline-block mx-0.5"
-                  onMouseEnter={() => setOpenKeywordId(tokenKey)}
-                  onMouseLeave={() => setOpenKeywordId(null)}
-                >
-                  <button
-                    type="button"
-                    onClick={() => setOpenKeywordId(isOpen ? null : tokenKey)}
-                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-cyan-950/80 hover:bg-cyan-900/90 text-cyan-300 border border-cyan-700/70 font-semibold text-xs sm:text-sm transition-colors cursor-pointer align-baseline"
-                    aria-expanded={isOpen}
-                  >
-                    <Sparkles className="w-3 h-3 text-cyan-400 shrink-0" />
-                    {part}
-                  </button>
-
-                  {isOpen && (
-                    <span
-                      role="tooltip"
-                      className="block z-30 absolute left-0 top-full mt-2 w-72 sm:w-80 p-3.5 rounded-xl bg-zinc-900 border border-zinc-700 shadow-2xl text-left"
-                    >
-                      <span className="flex items-center justify-between gap-2 mb-1.5">
-                        <span className="font-bold text-zinc-100 text-sm flex items-center gap-1.5">
-                          {matchedKw.name}
-                        </span>
-                        <span
-                          className={`text-[10px] font-mono uppercase px-1.5 py-0.5 rounded border ${
-                            MECHANIC_TYPE_STYLES[matchedKw.type] || 'bg-zinc-800 text-zinc-300 border-zinc-700'
-                          }`}
-                        >
-                          {matchedKw.type}
-                        </span>
-                      </span>
-                      <span className="block text-xs italic text-zinc-400 mb-2">
-                        {matchedKw.reminderText}
-                      </span>
-                      <span className="block text-xs text-zinc-300 leading-relaxed mb-3">
-                        {matchedKw.rulesExplanation}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setOpenKeywordId(null);
-                          onJumpToKeyword(matchedKw.id);
-                        }}
-                        className="w-full inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/40 text-cyan-300 text-xs font-medium transition-colors cursor-pointer"
-                      >
-                        View in Keyword Glossary
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </button>
-                    </span>
-                  )}
-                </span>
+                <React.Fragment key={keyPrefix}>
+                  {renderKeywords(part, keyPrefix)}
+                </React.Fragment>
               );
             })}
           </p>
@@ -1102,7 +1200,7 @@ function InteractiveCardText({ text, onJumpToKeyword }) {
 // 5. GLOBAL NAVBAR & LIVE INSTANT SEARCH BAR
 // ============================================================================
 
-function GlobalSearchBox({ navigate, placeholder = 'Search cards, keywords, rulings...', large = false }) {
+function GlobalSearchBox({ navigate, placeholder = 'Procure por cartas, palavras-chave e regras...', large = false }) {
   const [query, setQuery] = useState('');
   const [focused, setFocused] = useState(false);
   const boxRef = useRef(null);
@@ -1136,12 +1234,13 @@ function GlobalSearchBox({ navigate, placeholder = 'Search cards, keywords, ruli
     const q = query.trim().toLowerCase();
     if (!q) return { cards: [], keywords: [] };
     const matchedCards = CARDS.filter(
-      (c) =>
-        c.name.toLowerCase().includes(q) ||
-        c.subtype.toLowerCase().includes(q) ||
-        c.faction.toLowerCase().includes(q) ||
-        c.cardText.toLowerCase().includes(q)
-    ).slice(0, 5);
+        (c) =>
+          c.name?.toLowerCase().includes(q) ||
+          c.subtype?.toLowerCase().includes(q) ||
+          c.faction?.toLowerCase().includes(q) ||
+          c.cardText?.toLowerCase().includes(q) ||
+          (c.cardActionText || '').replace(/(\*\*|__)/g, '').toLowerCase().includes(q)
+      ).slice(0, 5);
 
     const matchedKeywords = KEYWORDS.filter(
       (k) =>
@@ -1277,9 +1376,9 @@ function Navbar({ currentPath, navigate }) {
 
   const navItems = [
     { label: 'Home', path: '/', icon: Compass },
-    { label: 'Card Database', path: '/cards', icon: Layers },
-    { label: 'Keyword Glossary', path: '/keywords', icon: Sparkles },
-    { label: 'Rules & Phases', path: '/rules', icon: BookOpen }
+    { label: 'Cartas', path: '/cards', icon: Layers },
+    { label: 'Glossário', path: '/keywords', icon: Sparkles },
+    { label: 'Como Jogar', path: '/rules', icon: BookOpen }
   ];
 
   const isActive = (path) => {
@@ -1601,9 +1700,7 @@ function HomePortalView({ navigate }) {
 function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [typeFilter, setTypeFilter] = useState('All');
-  const [factionFilter, setFactionFilter] = useState('All');
   const [rarityFilter, setRarityFilter] = useState('All');
-  const [costFilter, setCostFilter] = useState('All');
   const [setFilter, setSetFilter] = useState(initialSetFilter || 'All');
   const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'table'
 
@@ -1613,10 +1710,8 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
     }
   }, [initialSetFilter]);
 
-  const types = ['All', 'Speed', 'Spell', 'Artifact', 'Resource'];
-  const factions = ['All', 'Solaris Enclave', 'Aetherwright Guild', 'Voidwalkers', 'Neutral'];
-  const rarities = ['All', 'Common', 'Uncommon', 'Rare', 'Legendary'];
-  const costs = ['All', '0', '1', '2', '3', '4', '5+'];
+  const types = ['All', 'Speed', 'Stamina', 'Power', 'Guts', 'Wits'];
+  const rarities = ['All', 'R', 'SR', 'SSR'];
   const sets = useMemo(() => ['All', ...Array.from(new Set(CARDS.map((c) => c.set)))], []);
 
   const filteredCards = useMemo(() => {
@@ -1625,42 +1720,30 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
       if (
         q &&
         !card.name.toLowerCase().includes(q) &&
-        !card.cardText.toLowerCase().includes(q) &&
-        !card.subtype.toLowerCase().includes(q) &&
-        !card.keywords.some((k) => k.toLowerCase().includes(q))
+        !(card.cardText || '').toLowerCase().includes(q) &&
+        !(card.cardActionText || '').replace(/(\*\*|__)/g, '').toLowerCase().includes(q) &&
+        !(card.keywords || []).some((k) => k.toLowerCase().includes(q))
       ) {
         return false;
       }
       if (typeFilter !== 'All' && card.type !== typeFilter) return false;
-      if (factionFilter !== 'All' && card.faction !== factionFilter) return false;
       if (rarityFilter !== 'All' && card.rarity !== rarityFilter) return false;
       if (setFilter !== 'All' && card.set !== setFilter) return false;
 
-      if (costFilter !== 'All') {
-        if (costFilter === '5+') {
-          if (card.cost < 5) return false;
-        } else if (card.cost !== Number(costFilter)) {
-          return false;
-        }
-      }
       return true;
     });
-  }, [searchQuery, typeFilter, factionFilter, rarityFilter, costFilter, setFilter]);
+  }, [searchQuery, typeFilter, rarityFilter, setFilter]);
 
   const hasActiveFilters =
     searchQuery !== '' ||
     typeFilter !== 'All' ||
-    factionFilter !== 'All' ||
     rarityFilter !== 'All' ||
-    costFilter !== 'All' ||
     setFilter !== 'All';
 
   const resetFilters = () => {
     setSearchQuery('');
     setTypeFilter('All');
-    setFactionFilter('All');
     setRarityFilter('All');
-    setCostFilter('All');
     setSetFilter('All');
   };
 
@@ -1670,13 +1753,13 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-zinc-800 pb-6">
         <div>
           <div className="text-xs font-mono text-cyan-400 uppercase tracking-wider mb-1">
-            Card Index & Rulings
+            Index de Cartas & Detalhes
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-zinc-100 tracking-tight">
-            Card Database
+            Banco de dados de cartas
           </h1>
           <p className="text-sm text-zinc-400 mt-1">
-            Filter by Card Type, Faction, Rarity, or Aether Cost. Select any card to view its Template B wiki sheet.
+            Filtre por Tipo de carta ou Raridade. Selecione qualquer carta para ver seus detalhes.
           </p>
         </div>
 
@@ -1693,7 +1776,7 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
               }`}
             >
               <Grid className="w-3.5 h-3.5" />
-              Visual Grid
+              Grid Visual
             </button>
             <button
               type="button"
@@ -1705,7 +1788,7 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
               }`}
             >
               <List className="w-3.5 h-3.5" />
-              Checklist Table
+              Tabela de Checklist
             </button>
           </div>
         </div>
@@ -1721,7 +1804,7 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Filter by name, keyword, or rules text..."
+              placeholder="Filtre por nome, habilidades, tipo, raridade e etc..."
               className="w-full pl-9 pr-8 py-2 rounded-xl bg-zinc-950 border border-zinc-800 focus:border-cyan-500/70 focus:outline-none text-sm text-zinc-100 placeholder-zinc-500"
             />
             {searchQuery && (
@@ -1751,22 +1834,6 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
             </select>
           </div>
 
-          {/* Faction Select */}
-          <div className="md:col-span-3">
-            <select
-              aria-label="Filter by Faction"
-              value={factionFilter}
-              onChange={(e) => setFactionFilter(e.target.value)}
-              className="w-full px-3 py-2 rounded-xl bg-zinc-950 border border-zinc-800 focus:border-cyan-500/70 focus:outline-none text-sm text-zinc-200"
-            >
-              {factions.map((f) => (
-                <option key={f} value={f}>
-                  {f === 'All' ? 'Faction: All' : f}
-                </option>
-              ))}
-            </select>
-          </div>
-
           {/* Rarity Select */}
           <div className="md:col-span-3">
             <select
@@ -1786,23 +1853,10 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
 
         {/* Cost Pills + Set Filter + Reset */}
         <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-zinc-800/80">
-          <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-xs font-mono text-zinc-500 mr-1">Aether Cost:</span>
-            {costs.map((c) => (
-              <button
-                key={c}
-                type="button"
-                onClick={() => setCostFilter(c)}
-                className={`px-2.5 py-1 rounded-lg font-mono text-xs font-medium transition-colors cursor-pointer ${
-                  costFilter === c
-                    ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/50'
-                    : 'bg-zinc-950 text-zinc-400 border border-zinc-800 hover:border-zinc-700'
-                }`}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
+          {/* DELETE from <div className="flex flex-wrap items-center gap-1.5"> down to its closing </div> */}
+
+          {/* Keep your Set Filter & Reset button right here */}
+        </div>
 
           <div className="flex items-center gap-3">
             {setFilter !== 'All' && (
@@ -1834,7 +1888,6 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
             )}
           </div>
         </div>
-      </div>
 
       {/* Results Display */}
       {filteredCards.length === 0 ? (
@@ -1846,7 +1899,7 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
             onClick={resetFilters}
             className="mt-2 px-4 py-2 rounded-xl bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 text-xs font-semibold hover:bg-cyan-500/30 transition-colors cursor-pointer"
           >
-            Reset All Filters
+            Redefina todos os filtros
           </button>
         </div>
       ) : viewMode === 'grid' ? (
@@ -1869,13 +1922,10 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="border-b border-zinc-800 bg-zinc-900/90 text-[11px] font-mono uppercase tracking-wider text-zinc-400">
-                <th className="py-3 px-4">No.</th>
-                <th className="py-3 px-4">Name</th>
-                <th className="py-3 px-4">Cost</th>
-                <th className="py-3 px-4">Type</th>
-                <th className="py-3 px-4">Faction</th>
-                <th className="py-3 px-4">Stats</th>
-                <th className="py-3 px-4">Rarity</th>
+                <th className="py-3 px-4">N.</th>
+                <th className="py-3 px-4">Nome</th>
+                <th className="py-3 px-4">Tipo</th>
+                <th className="py-3 px-4">Raridade</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-zinc-800/70 text-sm">
@@ -1893,15 +1943,8 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
                     <td className="py-3 px-4 font-semibold text-zinc-100 hover:text-cyan-300">
                       {card.name}
                     </td>
-                    <td className="py-3 px-4 font-mono text-cyan-300 font-bold">{card.cost}</td>
                     <td className="py-3 px-4 text-zinc-300">
-                      {card.type} <span className="text-zinc-500">— {card.subtype}</span>
-                    </td>
-                    <td className={`py-3 px-4 font-medium ${FACTION_ACCENTS[card.faction] || 'text-zinc-300'}`}>
-                      {card.faction}
-                    </td>
-                    <td className="py-3 px-4 font-mono text-xs text-zinc-300">
-                      {card.type === 'Speed' ? `${card.attack} / ${card.health}` : '—'}
+                      {card.type} <span className="text-zinc-500"> {card.subtype}</span>
                     </td>
                     <td className="py-3 px-4">
                       <span className={`px-2 py-0.5 rounded border text-[11px] font-medium ${rStyle.badge}`}>
@@ -1945,59 +1988,31 @@ function IndividualCardView({ slug, navigate }) {
     navigate('/keywords', { highlightKeyword: keywordId });
   };
 
-  const rarityStyle = RARITY_STYLES[card.rarity] || RARITY_STYLES.Common;
+  const rarityKey = card.rarity?.toUpperCase();
+  const rarityIcon = RARITY_ICONS[rarityKey];
+  const rarityStyle = RARITY_STYLES[rarityKey] || RARITY_STYLES.R;
 
   const metadataRows = [
     { label: 'Card Type', value: card.type },
-    { label: 'Subtype / Trait', value: card.subtype },
-    {
-      label: 'Faction / Color',
-      value: (
-        <span className={`font-semibold ${FACTION_ACCENTS[card.faction] || 'text-zinc-200'}`}>
-          {card.faction}
-        </span>
-      )
-    },
-    {
-      label: 'Cost',
-      value: (
-        <span className="font-mono font-bold text-cyan-300">{card.cost} Aether</span>
-      )
-    },
-    {
-      label: 'Stats',
-      value:
-        card.type === 'Speed' ? (
-          <span className="font-mono font-semibold text-zinc-100">
-            {card.attack} Attack / {card.health} Health
-          </span>
-        ) : (
-          <span className="font-mono text-zinc-500">N/A</span>
-        )
-    },
     {
       label: 'Rarity',
-      value: (
+      value: rarityIcon ? (
+        <img
+          src={rarityIcon}
+          alt={rarityKey}
+          title={rarityKey}
+          className="h-6 w-auto object-contain"
+        />
+      ) : (
         <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded border text-xs font-semibold ${rarityStyle.badge}`}>
-          <span className={`w-1.5 h-1.5 rounded-full ${rarityStyle.dot}`} />
           {card.rarity}
         </span>
       )
     },
     {
-      label: 'Set & Number',
-      value: (
-        <button
-          type="button"
-          onClick={() => navigate('/cards', { initialSet: card.set })}
-          className="text-left text-cyan-400 hover:text-cyan-300 underline decoration-cyan-700 underline-offset-2 font-medium transition-colors cursor-pointer"
-          title={`Filter Card Database by ${card.set}`}
-        >
-          {card.set} (#{card.collectorNumber})
-        </button>
-      )
-    },
-    { label: 'Artist', value: card.artist }
+      label: 'ID',
+      value: card.collectorNumber
+    }
   ];
 
   return (
@@ -2064,7 +2079,7 @@ function IndividualCardView({ slug, navigate }) {
                 </span>
               </div>
               <p className="text-sm text-zinc-400 mt-1">
-                {card.type} — {card.subtype} · <span className={FACTION_ACCENTS[card.faction]}>{card.faction}</span>
+                {card.type}
               </p>
             </div>
 
@@ -2076,12 +2091,12 @@ function IndividualCardView({ slug, navigate }) {
               {copiedLink ? (
                 <>
                   <Check className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="text-emerald-300">Copied Link</span>
+                  <span className="text-emerald-300">Link Copiado</span>
                 </>
               ) : (
                 <>
                   <Copy className="w-3.5 h-3.5" />
-                  <span>Copy Wiki Link</span>
+                  <span>Copiar Link da Wiki</span>
                 </>
               )}
             </button>
@@ -2092,10 +2107,10 @@ function IndividualCardView({ slug, navigate }) {
             <div className="flex items-center justify-between gap-2 border-b border-zinc-800/80 pb-3">
               <h2 className="text-sm font-mono uppercase tracking-wider text-zinc-400 flex items-center gap-2">
                 <FileText className="w-4 h-4 text-cyan-400" />
-                Card Text
+                Texto da Carta
               </h2>
               <span className="text-[11px] text-zinc-500">
-                Hover or tap highlighted keywords for rulings
+                Passe o mouse ou toque nas palavras-chave destacadas para ver as regras
               </span>
             </div>
 
@@ -2104,12 +2119,12 @@ function IndividualCardView({ slug, navigate }) {
                 text={card.cardText}
                 onJumpToKeyword={handleJumpToKeyword}
               />
-            </div>
+            </div>           
 
             {/* Quick Keyword Pill Bar */}
             {card.keywords?.length > 0 && (
               <div className="pt-3 border-t border-zinc-800/70 flex flex-wrap items-center gap-2">
-                <span className="text-xs text-zinc-500">Referenced Keywords:</span>
+                <span className="text-xs text-zinc-500">Palavras-chave Referenciadas:</span>
                 {card.keywords.map((kwName) => {
                   const kwObj = KEYWORDS.find((k) => k.name.toLowerCase() === kwName.toLowerCase());
                   return (
@@ -2128,10 +2143,30 @@ function IndividualCardView({ slug, navigate }) {
             )}
           </section>
 
+          {/* Section 1.5: Action */}
+          <section className="rounded-2xl bg-zinc-900/75 border border-zinc-800 p-5 sm:p-6 space-y-3">
+            <div className="flex items-center justify-between gap-2 border-b border-zinc-800/80 pb-3">
+              <h2 className="text-sm font-mono uppercase tracking-wider text-zinc-400 flex items-center gap-2">
+                <FileText className="w-4 h-4 text-cyan-400" />
+                Ação da Carta
+              </h2>
+              <span className="text-[11px] text-zinc-500">
+                Passe o mouse ou toque nas palavras-chave destacadas para ver as regras
+              </span>
+            </div>
+
+           <div className="pt-1">
+            <InteractiveCardText
+              text={card.cardActionText}
+              onJumpToKeyword={handleJumpToKeyword}
+            />
+            </div>
+          </section>
+
           {/* Section 2: Flavor Text */}
           <section className="space-y-2.5">
             <h2 className="text-sm font-mono uppercase tracking-wider text-zinc-400">
-              Flavor Text
+              Texto de Flavore
             </h2>
             <blockquote className="p-5 rounded-2xl bg-zinc-900/40 border-l-4 border-cyan-500/70 border-y border-r border-zinc-800/80 italic text-zinc-300 text-sm sm:text-base leading-relaxed">
               {card.flavorText}
@@ -2142,7 +2177,7 @@ function IndividualCardView({ slug, navigate }) {
           <section className="rounded-2xl bg-zinc-900/60 border border-zinc-800 p-5 sm:p-6 space-y-4">
             <h2 className="text-base font-bold text-zinc-100 flex items-center gap-2 border-b border-zinc-800 pb-3">
               <HelpCircle className="w-4 h-4 text-amber-400" />
-              Specific Rulings & FAQ
+              Regras Específicas & Perguntas Frequentes
             </h2>
 
             <div className="space-y-4">
@@ -2167,7 +2202,7 @@ function IndividualCardView({ slug, navigate }) {
               <div className="p-3.5 rounded-xl bg-cyan-950/25 border border-cyan-800/40 flex items-start gap-2.5 text-xs sm:text-sm text-cyan-200">
                 <Info className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="font-semibold text-cyan-300">Interaction Note: </strong>
+                  <strong className="font-semibold text-cyan-300">Dica do Luís: </strong>
                   {card.interactionNotes}
                 </div>
               </div>
@@ -2178,7 +2213,7 @@ function IndividualCardView({ slug, navigate }) {
           <section className="rounded-2xl bg-zinc-900/60 border border-zinc-800 p-5 sm:p-6 space-y-4">
             <h2 className="text-base font-bold text-zinc-100 flex items-center gap-2 border-b border-zinc-800 pb-3">
               <History className="w-4 h-4 text-indigo-400" />
-              Patch History
+              Histórico de Atualizações
             </h2>
 
             <ul className="space-y-3">
@@ -2204,7 +2239,7 @@ function IndividualCardView({ slug, navigate }) {
           <div className="rounded-2xl bg-zinc-900/90 border border-zinc-800 overflow-hidden shadow-xl">
             <div className="px-4 py-3 bg-zinc-950 border-b border-zinc-800 flex items-center justify-between">
               <span className="text-xs font-mono uppercase tracking-wider text-zinc-400">
-                Card Infobox
+                Informações da Carta
               </span>
               <span className="text-xs font-mono text-zinc-500">{card.setCode}</span>
             </div>
@@ -2257,7 +2292,7 @@ function KeywordGlossaryView({ navigate, highlightedKeywordId = null }) {
     }
   }, [highlightedKeywordId]);
 
-  const mechanicTypes = ['All', 'Static', 'Triggered', 'Activated', 'Spell Mechanic'];
+  const mechanicTypes = ['All', 'Static', 'Triggered', 'Activated', 'Stamina Mechanic'];
 
   const filteredKeywords = useMemo(() => {
     return KEYWORDS.filter((kw) => {
@@ -2280,13 +2315,13 @@ function KeywordGlossaryView({ navigate, highlightedKeywordId = null }) {
       {/* Header */}
       <div className="border-b border-zinc-800 pb-6 space-y-2">
         <div className="text-xs font-mono text-amber-400 uppercase tracking-wider">
-          Rules Reference · Template C
+          Referência a Regras & Habilidades
         </div>
         <h1 className="text-2xl sm:text-3xl font-bold text-zinc-100 tracking-tight">
-          Keyword & Mechanic Glossary
+          Glossário de Palavras-chave & Mecânicas
         </h1>
         <p className="text-sm text-zinc-400 max-w-2xl">
-          Complete reference for all keyword abilities, reminder text, edge-case rulings, and cards utilizing each mechanic.
+          Referência completa para todas as habilidades de palavras-chave, textos de lembrete, decisões de casos extremos e cartas que utilizam cada mecânica.
         </p>
       </div>
 
@@ -2301,7 +2336,7 @@ function KeywordGlossaryView({ navigate, highlightedKeywordId = null }) {
               setSearchQuery(e.target.value);
               setActiveHighlight(null);
             }}
-            placeholder="Search keywords or rules text..."
+            placeholder="Pesquisar palavras-chave ou textos de regras..."
             className="w-full pl-9 pr-8 py-2 rounded-xl bg-zinc-950 border border-zinc-800 focus:border-amber-500/70 focus:outline-none text-sm text-zinc-100 placeholder-zinc-500"
           />
           {searchQuery && (
@@ -2339,7 +2374,7 @@ function KeywordGlossaryView({ navigate, highlightedKeywordId = null }) {
       {/* Keyword Entries List */}
       {filteredKeywords.length === 0 ? (
         <div className="p-10 rounded-2xl bg-zinc-900/50 border border-zinc-800 text-center text-sm text-zinc-400">
-          No keywords match "{searchQuery}".
+          Nenhuma palavra-chave corresponde a "{searchQuery}".
         </div>
       ) : (
         <div className="space-y-6">
@@ -2377,7 +2412,7 @@ function KeywordGlossaryView({ navigate, highlightedKeywordId = null }) {
                 {/* Reminder Text in Italics */}
                 <div className="px-4 py-2.5 rounded-xl bg-zinc-950/90 border border-zinc-800/90 text-sm italic text-zinc-300">
                   <span className="not-italic font-mono text-xs text-zinc-500 mr-2">
-                    Reminder Text:
+                    Texto de Lembrete:
                   </span>
                   ({kw.reminderText})
                 </div>
@@ -2385,7 +2420,7 @@ function KeywordGlossaryView({ navigate, highlightedKeywordId = null }) {
                 {/* Detailed Rules Explanation */}
                 <div className="space-y-1.5">
                   <h3 className="text-xs font-mono uppercase tracking-wider text-zinc-400">
-                    Rules Explanation
+                    Explicação das Regras
                   </h3>
                   <p className="text-sm text-zinc-200 leading-relaxed">{kw.rulesExplanation}</p>
                 </div>
@@ -2393,7 +2428,7 @@ function KeywordGlossaryView({ navigate, highlightedKeywordId = null }) {
                 {/* Edge Cases & Rulings Bullet List */}
                 <div className="space-y-2">
                   <h3 className="text-xs font-mono uppercase tracking-wider text-zinc-400">
-                    Edge Cases & Rulings
+                    Casos Extremos & Decisões
                   </h3>
                   <ul className="list-disc list-inside space-y-1.5 text-sm text-zinc-300">
                     {kw.edgeCases.map((rule, idx) => (
@@ -2407,7 +2442,7 @@ function KeywordGlossaryView({ navigate, highlightedKeywordId = null }) {
                 {/* Clickable "Cards with [Keyword]" Pills */}
                 <div className="pt-3 border-t border-zinc-800/80 flex flex-wrap items-center gap-2">
                   <span className="text-xs font-mono text-zinc-400 mr-1">
-                    Cards with {kw.name}:
+                    Cartas com {kw.name}:
                   </span>
                   {matchingCards.map((card) => (
                     <button
@@ -2467,10 +2502,10 @@ function RulesAndTurnStructureView({ navigate }) {
           Comprehensive Rulebook · {GAME_META.version}
         </div>
         <h1 className="text-2xl sm:text-3xl font-bold text-zinc-100 tracking-tight">
-          How to Play & Turn Structure
+          Como Jogar & Estrutura da Rodada
         </h1>
         <p className="text-sm text-zinc-400 max-w-2xl">
-          Core match objectives, pre-game setup procedures, interactive 5-phase turn breakdown, and constructed deckbuilding rules.
+          Objetivos principais da corrida, procedimentos de configuração antes do da corrida, fases de turno, regras de prioridade, janelas de ação e decisões de casos extremos.
         </p>
       </div>
 
@@ -2478,7 +2513,7 @@ function RulesAndTurnStructureView({ navigate }) {
       <section className="rounded-2xl bg-gradient-to-br from-indigo-950/35 via-zinc-900/80 to-zinc-900/80 border border-indigo-800/50 p-6 space-y-3">
         <div className="flex items-center gap-2 text-indigo-300 font-mono text-xs uppercase tracking-wider">
           <Award className="w-4 h-4" />
-          1. Objective
+          1. Objetivo do Jogo
         </div>
         <h2 className="text-xl font-bold text-zinc-100">{RULES.objective.title}</h2>
         <p className="text-sm sm:text-base text-zinc-200 font-medium leading-relaxed">
@@ -2495,9 +2530,9 @@ function RulesAndTurnStructureView({ navigate }) {
       <section className="space-y-4">
         <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-wider">
           <SlidersHorizontal className="w-4 h-4" />
-          2. Game Setup
+          2. Setup da Corrida
         </div>
-        <h2 className="text-xl font-bold text-zinc-100">Pre-Match Preparation</h2>
+        <h2 className="text-xl font-bold text-zinc-100">Preparação Antes da Corrida</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {RULES.setup.map((s) => (
@@ -2523,11 +2558,8 @@ function RulesAndTurnStructureView({ navigate }) {
           <div>
             <div className="flex items-center gap-2 text-amber-400 font-mono text-xs uppercase tracking-wider mb-1">
               <Clock className="w-4 h-4" />
-              3. Turn Structure
+              3. Estrutura de Turno
             </div>
-            <h2 className="text-xl font-bold text-zinc-100">
-              Interactive 5-Phase Turn Breakdown
-            </h2>
             <p className="text-sm text-zinc-400">
               Click any turn phase below to inspect sub-steps, action windows, and priority rules.
             </p>

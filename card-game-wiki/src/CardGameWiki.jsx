@@ -348,9 +348,9 @@ export const CARDS = [
     collectorNumber: '007',
     keywords: [],
     cardText:
-      'Late Surger, Early\n+25 Power\n Sem Skill',
+      'End Closer, Mid\n+25 Guts\n Sem Skill',
     cardActionText:
-      '**Disciplina Total**\n__Correndo de Late Surger:__\n**Sempre no Early:** +1 Face Máxima e +1 Casa - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Face Máxima e +1 Casa\n**Caiu no Mid ou no Late:** +1 Face Máxima',
+      '**Lanchinho da Conveniência**\n__Correndo de End Closer:__\n**Sempre no Mid:** +1 Dado Extra e +1 Casa - Dispara sozinha no 1° turno do Mid (ao passar de 1/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +1 Dado Extra e +1 Casa\n**Caiu no Early ou no Late:** +1 Casa',
     flavorText:
       '" "',
     rulings: [
@@ -386,9 +386,9 @@ export const CARDS = [
     collectorNumber: '008',
     keywords: [],
     cardText:
-      'Late Surger, Early\n+25 Power\n Sem Skill',
+      'Front Runner, Pace Chaser, Late\n+25 Guts\n Sem Skill',
     cardActionText:
-      '**Disciplina Total**\n__Correndo de Late Surger:__\n**Sempre no Early:** +1 Face Máxima e +1 Casa - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Face Máxima e +1 Casa\n**Caiu no Mid ou no Late:** +1 Face Máxima',
+      '**Não Foi Nada!**\n__Correndo de Front Runner ou Pace Chaser:__\n**Sempre no Late:** +3 Casas - Dispara sozinha no 1° turno do Late (ao passar de 4/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +3 Casas\n**Caiu no Mid ou no Early:** +1 Casa',
     flavorText:
       '" "',
     rulings: [
@@ -424,9 +424,9 @@ export const CARDS = [
     collectorNumber: '009',
     keywords: [],
     cardText:
-      'Late Surger, Early\n+25 Power\n Sem Skill',
+      'Late Surger, Late\n+25 Wits\n Sem Skill',
     cardActionText:
-      '**Disciplina Total**\n__Correndo de Late Surger:__\n**Sempre no Early:** +1 Face Máxima e +1 Casa - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Face Máxima e +1 Casa\n**Caiu no Mid ou no Late:** +1 Face Máxima',
+      '**Amuleto da Sorte**\n__Correndo de Late Surger:__\n**Sempre no Late:** +1 Face Máxima e +1 Casa - Dispara sozinha no 1° turno do Late (ao passar de 4/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +1 Face Máxima e +1 Casa\n**Caiu no Mid ou no Early:** +1 Casa',
     flavorText:
       '" "',
     rulings: [
@@ -462,9 +462,9 @@ export const CARDS = [
     collectorNumber: '010',
     keywords: [],
     cardText:
-      'Late Surger, Early\n+25 Power\n Sem Skill',
+      'Pace Chaser, Early\n+25 Wits\n Sem Skill',
     cardActionText:
-      '**Disciplina Total**\n__Correndo de Late Surger:__\n**Sempre no Early:** +1 Face Máxima e +1 Casa - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Face Máxima e +1 Casa\n**Caiu no Mid ou no Late:** +1 Face Máxima',
+      '**Análise de Largada**\n__Correndo de Pace Chaser:__\n**Sempre no Early:** +1 Face Mínima e +2 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Face Mínima e +2 Casas\n**Caiu no Mid ou no Late:** +1 Face Mínima',
     flavorText:
       '" "',
     rulings: [

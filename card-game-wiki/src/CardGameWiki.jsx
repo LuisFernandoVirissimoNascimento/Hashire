@@ -46,15 +46,13 @@ export const GAME_META = {
   version: 'v1',
   latestSet: '0.2',
   latestSetCode: 'SHM',
-  releaseDate: '2026-10-15',
-  totalCardsInSet: 180,
+  releaseDate: '16/11/2026',
+  totalCardsInSet: 30,
   patchSummary:
-    'Patch v1.4.2 introduces keyword timing clarifications for Chronoshift, adjusts Solaris Shieldbearer health from 3 to 4, and updates Shatter interactions against multi-layered Ward barriers.',
+    'Patch v1 introduz as cartas que sairam no primeiro dia do jogo.',
   quickStats: [
-    { label: 'Indexed Cards', value: '8 Sample / 180 Set' },
-    { label: 'Core Keywords', value: '6 Mechanics' },
-    { label: 'Current Format', value: 'Meridian Standard' },
-    { label: 'Rules Version', value: 'CompRules 1.4.2' }
+    // { label: 'Criador', value: 'Mambo' },
+    // { label: 'Suporte da Wiki', value: 'Luís' }
   ]
 };
 
@@ -88,87 +86,26 @@ const TYPE_ICONS = {
 
 export const KEYWORDS = [
   {
-    id: 'vanguard',
-    name: 'Vanguard',
-    type: 'Static',
+    id: 'blocked',
+    name: 'Blocked/Bloqueado',
+    type: 'Evento de Corrida',
     reminderText:
-      'Opponents must target or block this unit first if able when declaring attacks or single-target unit Staminas.',
+      'Essa mecânica foi documentada por observação e não é oficialmente confirmado como correto as informações abaixo.',
     rulesExplanation:
-      'Vanguard creates a combat and targeting priority lock while the unit is stationed in the Frontline Zone. As long as you control at least one ready or exhausted unit with Vanguard, opposing attackers cannot bypass it to strike your Commander directly, and single-target opposing Staminas that can legally target a unit must choose a Vanguard unit if one is legal.',
+      'Blocked ou Bloqueado acontece a uma Uma quando ela rola casas o suficiente para passar a Uma logo a sua frente, mas a Uma a frente rolou menos que a Uma a ultrapassar. Esse evento acontece aleatóriamente.',
     edgeCases: [
-      'If you control multiple units with Vanguard, the opposing player chooses which Vanguard unit to attack or target.',
-      'Vanguard does not force opponents to target the unit with Staminas that explicitly specify "non-Vanguard" or target non-unit permanents like Powers.',
-      'If a Vanguard unit is placed in the Astral Zone or loses its abilities, the targeting restriction ends immediately.'
     ]
   },
   {
-    id: 'surge',
-    name: 'Surge',
-    type: 'Triggered',
+    id: 'latestart',
+    name: 'Late Start/Início Tardio',
+    type: 'Evento de Corrida',
     reminderText:
-      'Triggers an additional bonus effect if you have cast at least one other Stamina earlier this turn.',
+      'Essa mecânica foi documentada por observação e não é oficialmente confirmado como correto as informações abaixo.',
     rulesExplanation:
-      'Surge checks the turn history at the exact moment a card is played or enters the battlefield. If the controller has already cast one or more Stamina cards during the current turn (regardless of whether those Staminas resolved or were countered), the Surge clause activates and resolves immediately after the card’s primary effect.',
+      'Late Start ou Início Tardio acontece no início da corrida quando a Uma perde um dos seus dados de avanço. Esse evento acontece aleatóriamente.',
     edgeCases: [
-      'Playing a Unit, Power, or Guts card does not count toward activating Surge—only Stamina cards increment your Surge count.',
-      'A Stamina with Surge does not count itself; you must have cast a different Stamina earlier in the same turn.',
-      'Copies of Staminas created on the stack are not "cast" and therefore do not trigger Surge.'
-    ]
-  },
-  {
-    id: 'ward',
-    name: 'Ward',
-    type: 'Static',
-    reminderText:
-      'Opponents must pay 2 additional Aether whenever they target this permanent with a Stamina or activated ability.',
-    rulesExplanation:
-      'Ward is a protective tax applied during the cost-payment step of casting a Stamina or activating an ability. Whenever an opponent selects a permanent with Ward as one or more targets, the total Aether cost increases by 2 for each Ward permanent targeted. If the opponent cannot or refuses to pay the extra Aether, the targeting action is illegal and reversed.',
-    edgeCases: [
-      'Area-of-effect Staminas that do not use the word "target" (such as "Deal 2 damage to all units") bypass Ward completely.',
-      'Multiple instances of Ward on the same permanent stack cumulatively (e.g., two instances of Ward require 4 extra Aether).',
-      'Ward does not tax the permanent’s controller—you can target your own Ward units freely.'
-    ]
-  },
-  {
-    id: 'shatter',
-    name: 'Shatter',
-    type: 'Stamina Mechanic',
-    reminderText:
-      'Destroy target Power, or remove all Shield counters and Ward buffs from target Unit.',
-    rulesExplanation:
-      'Shatter is a modal destructive keyword found primarily on Ruin and Void Staminas or assassins. When resolving a Shatter effect, choose an eligible Power or Unit. If an Power is chosen, it is immediately destroyed and sent to its owner’s Scrapyard. If a Unit is chosen, all Shield counters and Ward abilities granted to it until end of turn are stripped away.',
-    edgeCases: [
-      'Stripping Ward with Shatter still requires you to pay the unit’s Ward cost when initially targeting it with the Shatter Stamina.',
-      'Shatter can target an Power even if it has Indestructible; however, Indestructible prevents destruction while still triggering "when targeted" abilities.',
-      'If a Unit has zero Shield counters and no Ward, it is still a legal target for Shatter to trigger secondary effects.'
-    ]
-  },
-  {
-    id: 'overclock',
-    name: 'Overclock',
-    type: 'Activated',
-    reminderText:
-      'Pay the listed Aether cost and exhaust this permanent during your Main Phase to trigger its overloaded system.',
-    rulesExplanation:
-      'Overclock represents pushing an Power or Guts conduit beyond safe limits. You may activate an Overclock ability at sorcery speed during your Main Phase if the permanent is currently ready (unexhausted) and you can pay its listed Overclock Aether cost. Exhausting the permanent is part of the activation cost.',
-    edgeCases: [
-      'Units with Overclock cannot activate Overclock on the same turn they enter play unless they have Haste.',
-      'Because exhausting is paid as a cost, opponents cannot respond by exhausting the permanent to stop an Overclock already on the stack.',
-      'If an Overclock ability states "Overclock 2", you pay 2 Aether plus exhaust the card.'
-    ]
-  },
-  {
-    id: 'chronoshift',
-    name: 'Chronoshift',
-    type: 'Triggered',
-    reminderText:
-      'When this card enters or leaves the Astral Zone, look at the top 2 cards of your deck (Scry 2) and gain 1 temporary Aether.',
-    rulesExplanation:
-      'Chronoshift rewards temporal manipulation and exile-zone cycling. Whenever a card with Chronoshift is banished to the Astral Zone from any zone—or returns from the Astral Zone to the field or your hand—its controller immediately looks at the top 2 cards of their deck, puts any number on the bottom in any order, and adds 1 temporary Aether to their pool until end of phase.',
-    edgeCases: [
-      'Temporary Aether gained from Chronoshift empties when the current phase ends if unspent.',
-      'If a card with Chronoshift is banished face-down, Chronoshift does not trigger because its characteristics are hidden.',
-      'Flickering a card (banishing to the Astral Zone and immediately returning it) triggers Chronoshift twice—once on entry and once on exit.'
+      'Faz nada caso você só possua um dado.',
     ]
   }
 ];
@@ -546,51 +483,710 @@ export const CARDS = [
         date: '18/11/2026',
         note: 'Adicionada ao banco de dados inicial das cartas'
       }
+    ]
+  },
+  {
+    slug: 'eishin_flash',
+    name: 'Eishin Flash',
+    type: 'Speed',
+    rarity: 'SR',
+    image: '/cards/eishin_flash_SR.png',
+    collectorNumber: '011',
+    keywords: [],
+    cardText:
+      'Pace Chaser, Mid\n+40 Speed +10 Wit\n Race Planner: Mid +1 Casa por 2 Turnos',
+    cardActionText:
+      '**Horário Exato**\n__Correndo de Pace Chaser:__\n**Sempre no Mid:** +1 Dado - Dispara sozinha no 1° turno do Mid (ao passar de 1/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +1 Dado\n**Caiu no Early ou no Late:** +1 Face Mínima',
+    flavorText:
+      '" "',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
     ],
-    artConfig: {
-      primaryColor: '#f59e0b',
-      secondaryColor: '#fef3c7',
-      accentColor: '#d97706',
-      motif: 'shield'
-    }
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+  {
+    slug: 'sweep_tosho',
+    name: 'Sweep Tosho',
+    type: 'Speed',
+    rarity: 'SR',
+    image: '/cards/sweep_tosho_SR.png',
+    collectorNumber: '012',
+    keywords: [],
+    cardText:
+      'End Closer, Early\n+40 Speed +10 Wit\n Straightaway Acceleration: Late +2 Casas.',
+    cardActionText:
+      '**Feitiço Travesso**\n__Correndo de End Closer:__\n**Sempre no Early:** +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +3 Casas\n**Caiu no Mid ou no Late:** +2 Casas.',
+    flavorText:
+      '" "',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+  {
+    slug: 'mejiro_ryan',
+    name: 'Mejiro Ryan',
+    type: 'Stamina',
+    rarity: 'SR',
+    image: '/cards/mejiro_ryan_SR.png',
+    collectorNumber: '013',
+    keywords: [],
+    cardText:
+      'Pace Chaser, Early\n+40 Stamina +10 Power\n Hydrate: Mid +1 Dado Extra.',
+    cardActionText:
+      '**Pausa para hidratar**\n__Correndo de Pace Chaser:__\n**Sempre no Early:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Late:** +2 Casas.',
+    flavorText:
+      '" "',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+  {
+    slug: 'tm_opera_o',
+    name: 'TM Opera O',
+    type: 'Stamina',
+    rarity: 'SR',
+    image: '/cards/tm_opera_o_SR.png',
+    collectorNumber: '014',
+    keywords: [],
+    cardText:
+      'Front Runner, Pace Chaser, Late\n+40 Stamina +10 Power\n Corner Recovery ○: Late +1 Dado Extra.',
+    cardActionText:
+      '**Grande Ato**\n__Correndo de Front Runner ou Pace Chaser:__\n**Sempre no Late:** +1 Face Mínima e +3 Casas - Dispara sozinha no 1° turno do Late (ao passar de 4/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +1 Face Mínima e +3 Casas\n**Caiu no Mid ou no Early:** +2 Casas.',
+    flavorText:
+      '" "',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+  {
+    slug: 'hishi_amazon',
+    name: 'Hishi Amazon',
+    type: 'Power',
+    rarity: 'SR',
+    image: '/cards/hishi_amazon_SR.png',
+    collectorNumber: '015',
+    keywords: [],
+    cardText:
+      'Late Surger, Early\n+40 Power +10 Guts\n Steadfast: Late, Fora da Liderança +2 Face Máxima',
+    cardActionText:
+      '**Garra da Amazona**\n__Correndo de Late Surger:__\n**Sempre no Early:** +2 Face Máxima e +1 Casa - Dispara sozinha no 1° turno da corrida.\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +2 Face Máxima e +1 Casa\n**Caiu no Mid ou no Late:** +1 Face Máxima.',
+    flavorText:
+      '" "',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+  {
+    slug: 'special_week',
+    name: 'Special Week',
+    type: 'Power',
+    rarity: 'SR',
+    image: '/cards/special_week_SR.png',
+    collectorNumber: '016',
+    keywords: [],
+    cardText:
+      'Front Runner, Late\n+40 Power +10 Speed\n Corner Adept ○: Late, +1 Face Máxima',
+    cardActionText:
+      '**Carta para a Mamãe**\n__Correndo de Front Runner:__\n**Sempre no Late:** +3 Casas - Dispara sozinha no 1° turno do Late (ao passar de 4/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +3 Casas\n**Caiu no Mid ou no Early:** +2 Casas.',
+    flavorText:
+      '"John Uma Musume"',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+  {
+    slug: 'nice_nature',
+    name: 'Nice Nature',
+    type: 'Guts',
+    rarity: 'SR',
+    image: '/cards/nice_nature_SR.png',
+    collectorNumber: '017',
+    keywords: [],
+    cardText:
+      'Late Surger, Mid\n+40 Guts +10 Power\n Calm in a Crowd: Mid, Fora da liderança +2 Casas',
+    cardActionText:
+      '**Bronze de Respeito**\n__Correndo de Late Surger:__\n**Sempre no Mid:** +1 Face Mínima e +1 Face Máxima por 2 turnos - Dispara sozinha no 1° turno do Mid (ao passar de 1/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +1 Face Mínima e +1 Face Máxima por 2 turnos\n**Caiu no Late ou no Early:** +2 Casas.',
+    flavorText:
+      '"3"',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+  {
+    slug: 'tamamo_cross',
+    name: 'Tamamo Cross',
+    type: 'Guts',
+    rarity: 'SR',
+    image: '/cards/tamamo_cross_SR.png',
+    collectorNumber: '018',
+    keywords: [],
+    cardText:
+      'End Closer, Mid\n+40 Guts +10 Stamina\n Speed Eater: Mid, +2 Casas',
+    cardActionText:
+      '**Relâmpago Branco**\n__Correndo de End Closer:__\n**Sempre no Mid:** +2 Face Máxima e +1 Casa - Dispara sozinha no 1° turno do Mid (ao passar de 1/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +2 Face Máxima e +1 Casa por 2 turnos\n**Caiu no Late ou no Early:** +1 Face Máxima.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+  {
+    slug: 'gold_city',
+    name: 'Gold City',
+    type: 'Wits',
+    rarity: 'SR',
+    image: '/cards/gold_city_SR.png',
+    collectorNumber: '019',
+    keywords: [],
+    cardText:
+      'Late Surger, End Closer, Early\n+40 Wits +10 Speed\n Focus: Early, Anula o Late Start e +2 Casas',
+    cardActionText:
+      '**Receita Improvisada**\n__Correndo de Late Surger ou End Closer:__\n**Sempre no Early:** +2 Re-rolagens e +2 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +2 Re-rolagens e +2 Casas\n**Caiu no Late ou no Mid:** +1 Re-rolagem.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+  {
+    slug: 'seiun_sky',
+    name: 'Seiun Sky',
+    type: 'Wits',
+    rarity: 'SR',
+    image: '/cards/seiun_sky_SR.png',
+    collectorNumber: '020',
+    keywords: [],
+    cardText:
+      'Front Runner, Mid\n+40 Wits +10 Stamina\n Position Pilfer: Mid, Fora da Liderança +1 Face Máxima e +2 Casas',
+    cardActionText:
+      '**Preguiça Calculada**\n__Correndo de Front Runner:__\n**Sempre no Mid:** +1 Re-rolagens e +4 Casas - Dispara sozinha no 1° turno do Mid (ao passar de 1/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +1 Re-rolagens e +4 Casas\n**Caiu no Late ou no Early:** +1 Casa.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+  {
+    slug: 'kitasan_black',
+    name: 'Kitasan Black',
+    type: 'Speed',
+    rarity: 'SSR',
+    image: '/cards/kitasan_black_SSR.png',
+    collectorNumber: '021',
+    keywords: [],
+    cardText:
+      'Front Runner, Late\n+60 Speed +20 Power\n Givin It 1000%: Mid, +2 Face Máxima.',
+    cardActionText:
+      '**Matsuri até a Chegada**\n__Correndo de Front Runner:__\n**Sempre no Late:** +1 Face Máxima - Dispara sozinha no 1° turno do Late (ao passar 4/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +1 Face Máxima\n**Caiu no Early ou no Mid:** +1 Casa\n★★★★★★★★★★★★★\n**Ultimate - Early Lead**\n★☆☆ - Em 1° lugar no Late: +1 Face Mínima até a chegada.\n★★☆ - Em 1° lugar no Late: +1 Dado até a chegada.\n★★★ - Em 1° ou 2° lugar no Late: +1 Dado e +1 Face Mínima até a chegada.',
+    flavorText:
+      '"Harikite Ikkou!!!Harikite Ikkou!!!Harikite Ikkou!!!Harikite Ikkou!!!Harikite Ikkou!!!Harikite Ikkou!!!Harikite Ikkou!!!Harikite Ikkou!!!Harikite Ikkou!!!Harikite Ikkou!!!"',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+  {
+    slug: 'maruzensky',
+    name: 'Maruzensky',
+    type: 'Speed',
+    rarity: 'SSR',
+    image: '/cards/maruzensky_SSR.png',
+    collectorNumber: '022',
+    keywords: [],
+    cardText:
+      'Pace Chaser, Late\n+60 Speed +20 Power\n Corner Connoisseur: Late, +2 Face Máxima.',
+    cardActionText:
+      '**Brisa do Entardecer**\n__Correndo de Pace Chaser:__\n**Sempre no Late:** +1 Dado e +1 Casa - Dispara sozinha no 1° turno do Late (ao passar 4/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +1 Dado e +1 Casa\n**Caiu no Early ou no Mid:** +1 Face Máxima\n★★★★★★★★★★★★★\n**Ultimate - Professor of Curvature**\n★☆☆ - Liderando no mid: +1 Face Máxima por 2 Turnos.\n★★☆ - Liderando no mid: +2 Face Máxima por 3 Turnos.\n★★★ -  Liderando no mid: +2 Face Máxima ENQUANTO liderar, e +1 dado no primeiro turno.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+  {
+    slug: 'super_creek',
+    name: 'Super Creek',
+    type: 'Stamina',
+    rarity: 'SSR',
+    image: '/cards/super_creek_SSR.png',
+    collectorNumber: '023',
+    keywords: [],
+    cardText:
+      'Pace Chaser, Late\n+60 Stamina +20 Wit\n Breath of Fresh Air: Mid, +1 Dado Extra e +1 Casa.',
+    cardActionText:
+      '**Docinho da Creek**\n__Correndo de Pace Chaser:__\n**Sempre no Late:** +1 Dado rolado e +2 Dados Extras - Dispara sozinha no 1° turno do Late (ao passar 4/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +1 Dado rolado e +2 Dados Extras\n**Caiu no Early ou no Mid:** +1 Dado Extra e +1 Casa\n★★★★★★★★★★★★★\n**Ultimate - Swinging Maestro**\n★☆☆ - Ao ficar sem dados extras: +1 Dado Extra.\n★★☆ - Ao ficar sem dados extras: +2 Dado Extra e +1 Re-rolagem.\n★★★ - Ao ficar sem dados extras (até 2 vezes): +2 Dados Extras e +1 Re-rolagem.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+  {
+    slug: 'manhattan_cafe',
+    name: 'Manhattan Cafe',
+    type: 'Stamina',
+    rarity: 'SSR',
+    image: '/cards/manhattan_cafe_SSR.png',
+    collectorNumber: '024',
+    keywords: [],
+    cardText:
+      'Late Surger, End Closer, Mid\n+60 Stamina +20 Power\n Adrenaline Rush: Late, +1 Dado Extra e +1 Casa.',
+    cardActionText:
+      '**Sombra Companheira**\n__Correndo de Late Surger ou End Closer:__\n**Sempre no Mid:** +1 Dado e +1 Casa - Dispara sozinha no 1° turno do mid (ao passar 1/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +1 Dado e +1 Casa\n**Caiu no Early ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Extra Tank**\n★☆☆ - Late, fora do top 3: +3 Casas.\n★★☆ - Late, fora do top 3: +1 Dado e +2 Casas.\n★★★ - Late, fora do top 3: +1 Dado e +5 Casas.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+{
+    slug: 'kawakami_princess',
+    name: 'Kawakami Princess',
+    type: 'Power',
+    rarity: 'SSR',
+    image: '/cards/kawakami_princess_SSR.png',
+    collectorNumber: '025',
+    keywords: [],
+    cardText:
+      'Late Surger, Early\n+60 Power +20 Speed\nIn Body and Mind: Late, +1 Face Máxima e +1 Casa.',
+    cardActionText:
+      '**Orgulho Real**\n__Correndo de Late Surger:__\n**Sempre no Early:** +1 Dado e +1 Face Mínima - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Dado e +1 Face Mínima\n**Caiu no Mid ou no Late:** +1 Face Mínima e +1 Face Máxima\n★★★★★★★★★★★★★\n**Ultimate - Homestretch Haste**\n★☆☆ - No Late, fora da liderança (1 vez): +1 Dado.\n★★☆ - No Late, fora da liderança (1 vez): +1 Dado e +1 Face Mínima.\n★★★ - No Late, fora da liderança (1 vez): +1 Dado, +1 Face Mínima e +1 Face Máxima.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+{
+    slug: 'haru_urara',
+    name: 'Haru Urara',
+    type: 'Power',
+    rarity: 'SSR',
+    image: '/cards/haru_urara_SSR.png',
+    collectorNumber: '026',
+    keywords: [],
+    cardText:
+      'End Closer, Mid\n+60 Power +20 Guts\nBeeline Burst: Late, +2 Casas e +1 Face Mínima.',
+    cardActionText:
+      '**Sempre Sorrindo**\n__Correndo de End Closer:__\n**Sempre no Mid:** +1 Casa por 6 turnos - Dispara sozinha no 1° turno do Mid (ao passar de 1/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +1 Casa por 6 turnos\n**Caiu no Early ou no Late:** +1 Casa por 3 turnos\n★★★★★★★★★★★★★\n**Ultimate - Straightaway Adept**\n★☆☆ - +1 Casa nos 2 primeiros turnos do Mid.\n★★☆ - +1 Casa nos 4 primeiros turnos do Mid.\n★★★ - +1 Casa nos 4 primeiros turnos do Mid e nos 2 primeiros do Late.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+  {
+    slug: 'sakura_bakushin_o',
+    name: 'Sakura Bakushin O',
+    type: 'Guts',
+    rarity: 'SSR',
+    image: '/cards/sakura_bakushin_o_SSR.png',
+    collectorNumber: '027',
+    keywords: [],
+    cardText:
+      'Front Runner, Mid\n+60 Guts +20 Power\nCan\'t Even Catch My Shadow: Late, no top 3, +1 Dado.',
+    cardActionText:
+      '**Fornada de Sakura**\n__Correndo de Front Runner:__\n**Sempre no Mid:** +2 Face Mínima por 2 turnos - Dispara sozinha no 1° turno do Mid (ao passar de 1/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +2 Face Mínima por 2 turnos\n**Caiu no Early ou no Late:** +1 Face Mínima\n★★★★★★★★★★★★★\n**Ultimate - Final Push**\n★☆☆ - Late: +1 Face Mínima por 2 turnos.\n★★☆ - Do Late até a chegada: +1 Face Mínima.\n★★★ - Do Late até a chegada: +1 Face Mínima e +1 Face Máxima.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+  {
+    slug: 'marvelous_sunday',
+    name: 'Marvelous Sunday',
+    type: 'Guts',
+    rarity: 'SSR',
+    image: '/cards/marvelous_sunday_SSR.png',
+    collectorNumber: '028',
+    keywords: [],
+    cardText:
+      'Late Surger, Early\n+60 Guts +20 Stamina\nHot Pursuit: Late, fora da liderança, +1 Face Máxima e +2 Casas.',
+    cardActionText:
+      '**Marvelous!**\n__Correndo de Late Surger:__\n**Sempre no Early:** +6 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +6 Casas\n**Caiu no Mid ou no Late:** +3 Casas\n★★★★★★★★★★★★★\n**Ultimate - Slipstream**\n★☆☆ - No Late, fora da liderança: +1 Casa em todo turno.\n★★☆ - No Late, fora da liderança: +1 Dado (até 2 vezes).\n★★★ - No Late, fora da liderança: +1 Dado (até 3 vezes).',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+  {
+    slug: 'fine_motion',
+    name: 'Fine Motion',
+    type: 'Wits',
+    rarity: 'SSR',
+    image: '/cards/fine_motion_SSR.png',
+    collectorNumber: '029',
+    keywords: [],
+    cardText:
+      'Front Runner, Pace Chaser, Late\n+60 Wits +20 Stamina\nCenter Stage: Early, anula o Late Start e +1 Casa por 2 turnos.',
+    cardActionText:
+      '**Trevo da Sorte**\n__Correndo de Front Runner ou Pace Chaser:__\n**Sempre no Late:** +2 Re-rolagens e +2 Face Máxima - Dispara sozinha no 1° turno do Late (ao passar de 4/6 do percurso)\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +2 Re-rolagens e +2 Face Máxima\n**Caiu no Early ou no Mid:** +1 Re-rolagem\n★★★★★★★★★★★★★\n**Ultimate - Concentration**\n★☆☆ - Começa a corrida com +1 Re-rolagem.\n★★☆ - Começa com +1 Re-rolagem, e as 2 primeiras re-rolagens vão direto para a face máxima.\n★★★ - Começa com +2 Re-rolagens, e as 2 primeiras vão direto para a face máxima.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
+  },
+  {
+    slug: 'mr_cb',
+    name: 'Mr. C.B.',
+    type: 'Wits',
+    rarity: 'SSR',
+    image: '/cards/mr_cb_SSR.png',
+    collectorNumber: '030',
+    keywords: [],
+    cardText:
+      'End Closer, Early\n+60 Wits +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
+    cardActionText:
+      '**Lama no Rosto**\n__Correndo de End Closer:__\n**Sempre no Early:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Go with the Flow**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1',
+        date: '18/11/2026',
+        note: 'Adicionada ao banco de dados inicial das cartas'
+      }
+    ]
   }
 ];
 
 export const RULES = {
   objective: {
-    title: 'Game Objective & Win Conditions',
+    title: 'Objetivo do Jogo e Condições de Vitória',
     summary:
-      'Reduce the opposing Commander’s Life total from 25 to 0, or force your opponent to attempt to draw from an empty Main Deck.',
+      'Chegue no pódio durante a última rodada da corrída.',
     details: [
-      'Each player begins the match with 25 Commander Life and a 40-card Main Deck plus a 10-card Guts Conduit Deck.',
-      'If both Commanders reach 0 Life simultaneously during the resolution of a single effect, the match ends in a Draw.',
-      'A player immediately loses the match as a state-based action if they must draw a card while their Main Deck contains 0 cards.'
+      'Informações incompletas: Por favor informar a capcatdev no discord quais os números oficiais e possuir prova desses números.',
+      'Todo jogador ganha carats, mudança na mood dependendo e pontos ranqueados de sua posição ao finalizar a corrida e a grade da corrida. Só da para ganhar pontos ranqueados em corridas aonde tem 5 ou mais jogadores.',
+
+      'Debut : \n1° : 20 Carats, 0% Mood e +10 Pontos.\n2° : 10 Carats, 0% Mood e +0 Pontos.\n3° : 7 Carats, 0% Mood e +0 Pontos.\n4° : 5 Carats, 0% Mood e +3 Pontos.\n5° : 4 Carats, 0% Mood e +1 Ponto.\n6° : 3 Carats, 0% Mood e -1 Ponto.\n7° : 2 Carats, 0% Mood e -2 Pontos.\n8° : 2 Carats, 0% Mood e -3 Pontos.\n9° : 2 Carats, -10% Mood e -5 Pontos.',
+
+      'G3 : \n1° : 40 Carats, 0% Mood e +0 Pontos.\n2° : 20 Carats, 0% Mood e +0 Pontos.\n3° : 14 Carats, 0% Mood e +0 Pontos.\n4° : 0 Carats, 0% Mood e +0 Pontos.\n5° : 0 Carats, 0% Mood e +0 Ponto.\n6° : 6 Carats, 0% Mood e -0 Ponto.\n7° : 4 Carats, 0% Mood e -0 Pontos.\n8° : 4 Carats, 0% Mood e -0 Pontos.\n9° : 4 Carats, -10% Mood e -0 Pontos.',
+
+      'G2 : \n1° : 70 Carats, 0% Mood e +10 Pontos.\n2° : 0 Carats, 0% Mood e +0 Pontos.\n3° : 25 Carats, 0% Mood e +0 Pontos.\n4° : 0 Carats, 0% Mood e +0 Pontos.\n5° : 0 Carats, 0% Mood e +0 Ponto.\n6° : 0 Carats, 0% Mood e -0 Ponto.\n7° : 0 Carats, 0% Mood e -0 Pontos.\n8° : 0 Carats, 0% Mood e -0 Pontos.\n9° : 0 Carats, -10% Mood e -0 Pontos.',
+
+      'G1 : \n1° : 120 Carats, 0% Mood e +60 Pontos.\n2° : 60 Carats, 0% Mood e +36 Pontos.\n3° : 42 Carats, 0% Mood e +24 Pontos.\n4° : 30 Carats, 0% Mood e +15 Pontos.\n5° : 24 Carats, 0% Mood e +6 Ponto.\n6° : 18 Carats, 0% Mood e -6 Ponto.\n7° : 12 Carats, 0% Mood e -12 Pontos.\n8° : 12 Carats, 0% Mood e -3 Pontos.\n9° : 12 Carats, -10% Mood e -24 Pontos.',
+
+      'Se você for VIP a quantidade de carats dobra mas a quantidade de Mood e Pontos continua a mesma.',
+      'Qualquer Uma pode entrar qualquer grade de corrida sozinha ou com amigos/inimigos.'
     ]
   },
   setup: [
     {
       step: 1,
-      title: 'Present Decks & Roll for Initiative',
+      title: 'Treinamento',
       description:
-        'Each player shuffles their 40-card Main Deck and 10-card Guts Deck separately. Determine the starting player via a random roll; the winner chooses whether to play first or second.'
+        'Você deve treinar sua Uma em um dos 5 atributos para atingir novas capacidades e melhorar sua chance de vitória.'
     },
     {
       step: 2,
-      title: 'Draw Opening Hand & Mulligan',
+      title: 'Compra de Packs',
       description:
-        'Each player draws an opening hand of 5 cards. Once per game, each player may select any number of cards from their opening hand, place them on the bottom of their Main Deck, and draw that many replacement cards.'
+        'Compre Packs de cartas usando Carats ou o pack grátis que chega a cada 3 horas.'
     },
     {
       step: 3,
-      title: 'Initialize Commander & Starting Aether',
+      title: 'Use treino com cartas',
       description:
-        'Set both Commanders to 25 Life. The second player begins the game with 1 temporary Aether Shard token in their Reserve Zone to offset the first-turn initiative advantage.'
+        'Treinando consumindo os pontos das cartas te deixa adquirir novas habilidades, melhorar o treino que vai receber e até fazer com que não perca energia ou garanta que não vá falhar.'
     },
     {
       step: 4,
-      title: 'Deploy Initial Guts Conduit',
+      title: 'Treine em grupo!',
       description:
-        'Before Turn 1 begins, both players reveal the top card of their Guts Deck and place it into their Conduit Zone ready.'
+        'Se você treinar em grupo irá receber maior chance de eventos de treino e maior bônus do atributo treinado.'
+    }
+  ],
+  detailedTraining: [
+    {
+      id: 'training01',
+      number: '01',
+      name: 'Start Phase',
+      shortDesc: 'Ready all exhausted permanents, deploy a Guts, and resolve start-of-turn triggers.',
+      substeps: [
+        'Ready Step: Simultaneously ready (unexhaust) all Units, Powers, and Guts Conduits you control.',
+        'Conduit Step: Deploy the top card of your Guts Deck into your Conduit Zone (up to a maximum of 10 Conduits).',
+        'Upkeep Step: All "At the start of your turn" triggered abilities are placed on the stack and resolved in active-player order.'
+      ],
+      priorityNote:
+        'Players receive priority to cast Instant-speed Staminas after Upkeep triggers are placed on the stack.'
     }
   ],
   phases: [
@@ -646,19 +1242,6 @@ export const RULES = {
       ],
       priorityNote:
         'Combat damage does not use the stack—once the Combat Trick Window closes, damage is applied immediately.'
-    },
-    {
-      id: 'end',
-      number: '05',
-      name: 'End Phase',
-      shortDesc: 'Resolve end-of-turn triggers, clear temporary Aether/damage, and pass the turn.',
-      substeps: [
-        'End Step: Trigger all "At the end of your turn" or "At the start of the End Phase" effects (such as Chronos Astrolabe returns).',
-        'Cleanup Step: Discard down to the maximum hand size of 7 cards. All temporary Aether empties, until-end-of-turn buffs expire, and unmarked damage on Units is healed.',
-        'Pass Turn: Initiative passes to the opponent.'
-      ],
-      priorityNote:
-        'No player receives priority during the Cleanup Step unless an ability triggers from discarding.'
     }
   ],
   deckbuilding: [
@@ -717,7 +1300,7 @@ const RARITY_STYLES = {
 };
 
 const MECHANIC_TYPE_STYLES = {
-  Static: 'bg-sky-950/80 text-sky-300 border-sky-700/60',
+  'Evento de Corrida': 'bg-sky-950/80 text-sky-300 border-sky-700/60',
   Triggered: 'bg-amber-950/80 text-amber-300 border-amber-700/60',
   Activated: 'bg-emerald-950/80 text-emerald-300 border-emerald-700/60',
   'Stamina Mechanic': 'bg-purple-950/80 text-purple-300 border-purple-700/60'
@@ -1240,7 +1823,7 @@ function GlobalSearchBox({ navigate, placeholder = 'Procure por cartas, palavras
           c.faction?.toLowerCase().includes(q) ||
           c.cardText?.toLowerCase().includes(q) ||
           (c.cardActionText || '').replace(/(\*\*|__)/g, '').toLowerCase().includes(q)
-      ).slice(0, 5);
+      ).slice(0, 10);
 
     const matchedKeywords = KEYWORDS.filter(
       (k) =>
@@ -1498,11 +2081,11 @@ function HomePortalView({ navigate }) {
   return (
     <div className="space-y-14 pb-16">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-zinc-800/80 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-950/30 via-zinc-950 to-zinc-950 pt-12 pb-16 px-4 sm:px-6 lg:px-8">
+      <section className="relative z-30 border-b border-zinc-800/80 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-950/30 via-zinc-950 to-zinc-950 pt-12 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/90 border border-zinc-800 text-xs font-mono text-zinc-300">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Ruleset {GAME_META.version}</span>
+            <span>Wiki {GAME_META.version}</span>
             <span className="text-zinc-600">|</span>
             <span className="text-cyan-300">Patch atual: {GAME_META.latestSet}</span>
           </div>
@@ -1519,11 +2102,11 @@ function HomePortalView({ navigate }) {
 </p>
 
           {/* Prominent Hero Search Bar */}
-          <div className="max-w-xl mx-auto pt-2">
+          <div className="relative z-30 max-w-xl mx-auto pt-2">
             <GlobalSearchBox
               navigate={navigate}
               large
-              placeholder="Jump to any card (e.g. Valkyrie) or keyword (e.g. Surge, Ward)..."
+              placeholder="Pesquise qualquer carta ou palavra-chave do jogo."
             />
           </div>
 
@@ -1545,8 +2128,8 @@ function HomePortalView({ navigate }) {
       {/* Quick Navigation Portal Cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-bold text-zinc-100 tracking-tight">Knowledge Base Sections</h2>
-          <span className="text-xs font-mono text-zinc-500">Official Reference</span>
+          <h2 className="text-xl font-bold text-zinc-100 tracking-tight">Seções da Base de Conhecimento</h2>
+          <span className="text-xs font-mono text-zinc-500">Referência Oficial</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -1659,14 +2242,14 @@ function HomePortalView({ navigate }) {
           <div className="space-y-2.5 max-w-3xl">
             <div className="flex flex-wrap items-center gap-2">
               <span className="px-2.5 py-0.5 rounded-md bg-cyan-950/90 border border-cyan-700/60 text-cyan-300 font-mono text-xs font-semibold">
-                {GAME_META.version} RELEASE NOTES
+                {GAME_META.latestSet} Notas de atualização
               </span>
               <span className="text-xs font-mono text-zinc-500">
-                Set: {GAME_META.latestSet} ({GAME_META.latestSetCode}) · {GAME_META.releaseDate}
+                Patch: {GAME_META.latestSet} · {GAME_META.releaseDate}
               </span>
             </div>
             <h3 className="text-lg sm:text-xl font-bold text-zinc-100">
-              Latest Balance & Rules Errata Summary
+              Sumário de regras, erratas e atualizações do patch {GAME_META.latestSet}
             </h3>
             <p className="text-sm text-zinc-400 leading-relaxed">{GAME_META.patchSummary}</p>
           </div>
@@ -1674,17 +2257,17 @@ function HomePortalView({ navigate }) {
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <button
               type="button"
-              onClick={() => navigate('/cards', { initialSet: GAME_META.latestSet })}
+              onClick={() => navigate('/cards')}
               className="px-4 py-2.5 rounded-xl bg-zinc-100 hover:bg-white text-zinc-950 font-semibold text-sm transition-colors cursor-pointer"
             >
-              Browse {GAME_META.latestSet}
+              Navegar {GAME_META.latestSet}
             </button>
             <button
               type="button"
               onClick={() => navigate('/keywords')}
               className="px-4 py-2.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 border border-zinc-700 text-zinc-200 font-medium text-sm transition-colors cursor-pointer"
             >
-              Review Keywords
+              Revisar Palavras-Chave
             </button>
           </div>
         </div>
@@ -1700,6 +2283,7 @@ function HomePortalView({ navigate }) {
 function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [typeFilter, setTypeFilter] = useState('All');
+  const [sortOrder, setSortOrder] = useState('newest');
   const [rarityFilter, setRarityFilter] = useState('All');
   const [setFilter, setSetFilter] = useState(initialSetFilter || 'All');
   const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'table'
@@ -1715,7 +2299,7 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
   const sets = useMemo(() => ['All', ...Array.from(new Set(CARDS.map((c) => c.set)))], []);
 
   const filteredCards = useMemo(() => {
-    return CARDS.filter((card) => {
+    const results = CARDS.filter((card) => {
       const q = searchQuery.trim().toLowerCase();
       if (
         q &&
@@ -1732,19 +2316,23 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
 
       return true;
     });
-  }, [searchQuery, typeFilter, rarityFilter, setFilter]);
+
+    return sortOrder === 'newest' ? results.reverse() : results;
+  }, [searchQuery, typeFilter, rarityFilter, setFilter, sortOrder]);
 
   const hasActiveFilters =
-    searchQuery !== '' ||
+    searchQuery.trim() !== '' ||
     typeFilter !== 'All' ||
     rarityFilter !== 'All' ||
-    setFilter !== 'All';
+    setFilter !== 'All' ||
+    sortOrder !== 'newest';
 
   const resetFilters = () => {
     setSearchQuery('');
     setTypeFilter('All');
     setRarityFilter('All');
     setSetFilter('All');
+    setSortOrder('newest');
   };
 
   return (
@@ -1821,14 +2409,14 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
           {/* Card Type Select */}
           <div className="md:col-span-2">
             <select
-              aria-label="Filter by Card Type"
+              aria-label="Filtrar por Tipo de Carta"
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
               className="w-full px-3 py-2 rounded-xl bg-zinc-950 border border-zinc-800 focus:border-cyan-500/70 focus:outline-none text-sm text-zinc-200"
             >
               {types.map((t) => (
                 <option key={t} value={t}>
-                  {t === 'All' ? 'Type: All' : t}
+                  {t === 'All' ? 'Tipo: Todos' : t}
                 </option>
               ))}
             </select>
@@ -1837,20 +2425,32 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
           {/* Rarity Select */}
           <div className="md:col-span-3">
             <select
-              aria-label="Filter by Rarity"
+              aria-label="Filtrar por Raridade"
               value={rarityFilter}
               onChange={(e) => setRarityFilter(e.target.value)}
               className="w-full px-3 py-2 rounded-xl bg-zinc-950 border border-zinc-800 focus:border-cyan-500/70 focus:outline-none text-sm text-zinc-200"
             >
               {rarities.map((r) => (
                 <option key={r} value={r}>
-                  {r === 'All' ? 'Rarity: All' : r}
+                  {r === 'All' ? 'Raridade: Todos' : r}
                 </option>
               ))}
             </select>
           </div>
         </div>
-
+        
+        {/* Sort Order Select */}
+          <div className="md:col-span-3">
+            <select
+              aria-label="Ordenar cartas"
+              value={sortOrder}
+              onChange={(e) => setSortOrder(e.target.value)}
+              className="w-full px-3 py-2 rounded-xl bg-zinc-950 border border-zinc-800 focus:border-cyan-500/70 focus:outline-none text-sm text-zinc-200"
+            >
+              <option value="oldest">Ordem: Velho para mais Novo</option>
+              <option value="newest">Ordem: Novo para mais Velho</option>
+            </select>
+          </div>
         {/* Cost Pills + Set Filter + Reset */}
         <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-zinc-800/80">
           {/* DELETE from <div className="flex flex-wrap items-center gap-1.5"> down to its closing </div> */}
@@ -1873,7 +2473,7 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
             )}
 
             <span className="text-xs font-mono text-zinc-400">
-              Showing <strong className="text-zinc-100">{filteredCards.length}</strong> of {CARDS.length}
+              Mostrando <strong className="text-zinc-100">{filteredCards.length}</strong> de {CARDS.length}
             </span>
 
             {hasActiveFilters && (
@@ -1892,8 +2492,8 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
       {/* Results Display */}
       {filteredCards.length === 0 ? (
         <div className="rounded-2xl bg-zinc-900/50 border border-zinc-800 p-12 text-center space-y-3">
-          <p className="text-zinc-300 font-medium">No cards match your active filter criteria.</p>
-          <p className="text-sm text-zinc-500">Try clearing one or more filters to expand your search.</p>
+          <p className="text-zinc-300 font-medium">Nenhuma carta corresponde aos critérios de filtro ativos.</p>
+          <p className="text-sm text-zinc-500">Tente limpar um ou mais filtros para expandir sua pesquisa.</p>
           <button
             type="button"
             onClick={resetFilters}
@@ -2275,14 +2875,14 @@ function IndividualCardView({ slug, navigate }) {
 
 function KeywordGlossaryView({ navigate, highlightedKeywordId = null }) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [typeFilter, setTypeFilter] = useState('All');
+  const [typeFilter, setTypeFilter] = useState('Todos');
   const [activeHighlight, setActiveHighlight] = useState(highlightedKeywordId);
 
   useEffect(() => {
     if (highlightedKeywordId) {
       setActiveHighlight(highlightedKeywordId);
       setSearchQuery('');
-      setTypeFilter('All');
+      setTypeFilter('Todos');
       setTimeout(() => {
         const el = document.getElementById(`kw-${highlightedKeywordId}`);
         if (el) {
@@ -2292,7 +2892,7 @@ function KeywordGlossaryView({ navigate, highlightedKeywordId = null }) {
     }
   }, [highlightedKeywordId]);
 
-  const mechanicTypes = ['All', 'Static', 'Triggered', 'Activated', 'Stamina Mechanic'];
+  const mechanicTypes = ['Todos', 'Evento de Corrida', 'Corrida', 'Activated', 'Stamina Mechanic'];
 
   const filteredKeywords = useMemo(() => {
     return KEYWORDS.filter((kw) => {
@@ -2305,7 +2905,7 @@ function KeywordGlossaryView({ navigate, highlightedKeywordId = null }) {
       ) {
         return false;
       }
-      if (typeFilter !== 'All' && kw.type !== typeFilter) return false;
+      if (typeFilter !== 'Todos' && kw.type !== typeFilter) return false;
       return true;
     });
   }, [searchQuery, typeFilter]);
@@ -2499,7 +3099,7 @@ function RulesAndTurnStructureView({ navigate }) {
       {/* Header */}
       <div className="border-b border-zinc-800 pb-6 space-y-2">
         <div className="text-xs font-mono text-indigo-400 uppercase tracking-wider">
-          Comprehensive Rulebook · {GAME_META.version}
+          Livro de Regras Compreensível · {GAME_META.version}
         </div>
         <h1 className="text-2xl sm:text-3xl font-bold text-zinc-100 tracking-tight">
           Como Jogar & Estrutura da Rodada
@@ -2516,12 +3116,12 @@ function RulesAndTurnStructureView({ navigate }) {
           1. Objetivo do Jogo
         </div>
         <h2 className="text-xl font-bold text-zinc-100">{RULES.objective.title}</h2>
-        <p className="text-sm sm:text-base text-zinc-200 font-medium leading-relaxed">
+        <p className="text-sm sm:text-base text-zinc-200 font-medium leading-relaxed whitespace-pre-line">
           {RULES.objective.summary}
         </p>
-        <ul className="list-disc list-inside space-y-1.5 text-sm text-zinc-400 pt-1">
+        <ul className="list-disc pl-5 space-y-1.5 text-sm text-white/85 pt-1">
           {RULES.objective.details.map((item, idx) => (
-            <li key={idx}>{item}</li>
+            <li key={idx} className="whitespace-pre-line">{item}</li>
           ))}
         </ul>
       </section>
@@ -2552,39 +3152,26 @@ function RulesAndTurnStructureView({ navigate }) {
         </div>
       </section>
 
-      {/* Section 3: Interactive 5-Phase Turn Structure */}
+      {/* Section 3: Detailed Training*/}
       <section className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div>
             <div className="flex items-center gap-2 text-amber-400 font-mono text-xs uppercase tracking-wider mb-1">
               <Clock className="w-4 h-4" />
-              3. Estrutura de Turno
+              3. Detalhes de Treino
             </div>
-            <p className="text-sm text-zinc-400">
-              Click any turn phase below to inspect sub-steps, action windows, and priority rules.
+              <p className="text-sm text-zinc-400">
+                Clique qualquer parte abaixo para inspecionar sub-etapas, detalhes e dicas.
             </p>
           </div>
 
           <div className="flex items-center gap-2 self-start sm:self-auto">
-            <button
-              type="button"
-              onClick={expandAll}
-              className="px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs text-zinc-300 cursor-pointer"
-            >
-              Expand All
-            </button>
-            <button
-              type="button"
-              onClick={collapseAll}
-              className="px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs text-zinc-300 cursor-pointer"
-            >
-              Collapse All
-            </button>
+            
           </div>
         </div>
 
         <div className="space-y-3">
-          {RULES.phases.map((phase) => {
+          {RULES.detailedTraining.map((phase) => {
             const isExpanded = !!expandedPhases[phase.id];
             return (
               <div
@@ -2603,7 +3190,7 @@ function RulesAndTurnStructureView({ navigate }) {
                 >
                   <div className="flex items-center gap-3.5 min-w-0">
                     <span className="px-2.5 py-1 rounded-lg bg-zinc-950 border border-zinc-800 font-mono text-xs font-bold text-amber-400 shrink-0">
-                      PHASE {phase.number}
+                      Parte {phase.number}
                     </span>
                     <div className="min-w-0">
                       <h3 className="font-bold text-zinc-100 text-base">{phase.name}</h3>
@@ -2635,7 +3222,7 @@ function RulesAndTurnStructureView({ navigate }) {
                     <div className="p-3 rounded-xl bg-zinc-950/90 border border-zinc-800 text-xs text-zinc-400 flex items-start gap-2">
                       <Info className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
                       <span>
-                        <strong className="text-zinc-200">Priority & Timing: </strong>
+                        <strong className="text-zinc-200">Dica do Luís: </strong>
                         {phase.priorityNote}
                       </span>
                     </div>
@@ -2647,11 +3234,106 @@ function RulesAndTurnStructureView({ navigate }) {
         </div>
       </section>
 
-      {/* Section 4: Deckbuilding Rules */}
+      {/* Section 4: Interactive 5-Phase Turn Structure */}
+      <section className="space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div>
+            <div className="flex items-center gap-2 text-amber-400 font-mono text-xs uppercase tracking-wider mb-1">
+              <Clock className="w-4 h-4" />
+              4. Antes e Durante a Corrida
+            </div>
+            <p className="text-sm text-zinc-400">              
+              Clique qualquer parte abaixo para inspecionar sub-etapas, detalhes e dicas.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2 self-start sm:self-auto">
+            {/* <button
+              type="button"
+              onClick={expandAll}
+              className="px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs text-zinc-300 cursor-pointer"
+            >
+              Expand All
+            </button>
+            <button
+              type="button"
+              onClick={collapseAll}
+              className="px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs text-zinc-300 cursor-pointer"
+            >
+              Collapse All
+            </button> */}
+          </div>
+        </div>
+
+        <div className="space-y-3">
+          {RULES.phases.map((phase) => {
+            const isExpanded = !!expandedPhases[phase.id];
+            return (
+              <div
+                key={phase.id}
+                className={`rounded-2xl border transition-colors ${
+                  isExpanded
+                    ? 'bg-zinc-900/90 border-zinc-700'
+                    : 'bg-zinc-900/50 border-zinc-800 hover:border-zinc-700'
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => togglePhase(phase.id)}
+                  className="w-full px-5 py-4 flex items-center justify-between gap-4 text-left cursor-pointer"
+                  aria-expanded={isExpanded}
+                >
+                  <div className="flex items-center gap-3.5 min-w-0">
+                    <span className="px-2.5 py-1 rounded-lg bg-zinc-950 border border-zinc-800 font-mono text-xs font-bold text-amber-400 shrink-0">
+                      Parte {phase.number}
+                    </span>
+                    <div className="min-w-0">
+                      <h3 className="font-bold text-zinc-100 text-base">{phase.name}</h3>
+                      <p className="text-xs sm:text-sm text-zinc-400 truncate">{phase.shortDesc}</p>
+                    </div>
+                  </div>
+                  <div className="text-zinc-400 shrink-0">
+                    {isExpanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                  </div>
+                </button>
+
+                {isExpanded && (
+                  <div className="px-5 pb-5 pt-2 border-t border-zinc-800/80 space-y-4">
+                    <ul className="space-y-2.5 text-sm text-zinc-300">
+                      {phase.substeps.map((sub, idx) => {
+                        const [stepLead, ...rest] = sub.split(':');
+                        return (
+                          <li key={idx} className="flex items-start gap-2.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 shrink-0" />
+                            <span>
+                              <strong className="text-zinc-100">{stepLead}:</strong>
+                              {rest.join(':')}
+                            </span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+
+                    <div className="p-3 rounded-xl bg-zinc-950/90 border border-zinc-800 text-xs text-zinc-400 flex items-start gap-2">
+                      <Info className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                      <span>
+                        <strong className="text-zinc-200">Dica do Luís: </strong>
+                        {phase.priorityNote}
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Section 4: Deckbuilding Rules
       <section className="space-y-4">
         <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs uppercase tracking-wider">
           <Scale className="w-4 h-4" />
-          4. Deckbuilding Rules
+          5. Como funciona as cartas
         </div>
         <h2 className="text-xl font-bold text-zinc-100">Constructed Format Constraints</h2>
 
@@ -2671,12 +3353,12 @@ function RulesAndTurnStructureView({ navigate }) {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* Bottom Cross-Links */}
       <div className="pt-4 border-t border-zinc-800 flex flex-wrap items-center justify-between gap-4">
         <p className="text-sm text-zinc-400">
-          Need clarification on a specific keyword mentioned in the turn phases?
+          Precisa de clarificação sobre uma palavra-chave específica mencionada?
         </p>
         <div className="flex items-center gap-3">
           <button
@@ -2684,14 +3366,14 @@ function RulesAndTurnStructureView({ navigate }) {
             onClick={() => navigate('/keywords')}
             className="px-4 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-xs font-semibold text-zinc-100 transition-colors cursor-pointer"
           >
-            Open Keyword Glossary
+            Abrir Glossário de Palavras-chave
           </button>
           <button
             type="button"
             onClick={() => navigate('/cards')}
             className="px-4 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/40 text-xs font-semibold text-cyan-300 transition-colors cursor-pointer"
           >
-            Browse Card Database
+            Veja todas as Cartas
           </button>
         </div>
       </div>

@@ -1178,70 +1178,48 @@ export const RULES = {
     {
       id: 'training01',
       number: '01',
-      name: 'Start Phase',
-      shortDesc: 'Ready all exhausted permanents, deploy a Guts, and resolve start-of-turn triggers.',
+      name: 'Como Treinar',
+      shortDesc: 'Passo a Passo de como treinar os atributos de sua Uma.',
       substeps: [
-        'Ready Step: Simultaneously ready (unexhaust) all Units, Powers, and Guts Conduits you control.',
-        'Conduit Step: Deploy the top card of your Guts Deck into your Conduit Zone (up to a maximum of 10 Conduits).',
-        'Upkeep Step: All "At the start of your turn" triggered abilities are placed on the stack and resolved in active-player order.'
+        'Canal # Treinamento: Treino só pode ser feito no canal #treinamento do discord oficial do jogo.',
+        'Use o comando $train: Para treinar um dos 5 atributos você deve usar o comando $train seguido do atributo que deseja treinar. Exemplo: $train power. Os Atributos treináveis são: Speed, Stamina, Power, Guts, Wits e as maneiras de correr a treinar são Front, Pace, Late e End.',
+        'TP: Training Points são gastos toda vez que você treina, 1 por treino. Você pode ter no máximo 5 TP ( 10 se for VIP ) e eles regeneram 1 ponto a cada 30 minutos.',
+        'Energia: Toda vez que você treina você gasta 20% de energia de um total de 100%, o treino possue chance de falha de 15% ao chegar a 40% de energia, 35% ao chegar a 20% de energia e 60% ao chegar a 0% de energia. Para descansar use o comando $rest, esse comando irá restaurar sua energia a 100%.'
       ],
       priorityNote:
-        'Players receive priority to cast Instant-speed Staminas after Upkeep triggers are placed on the stack.'
+        'Caso não queira treinar o atributo do dia, a melhor ordem para treinar é Power > Speed > Guts > Stamina > Wits. Power sendo o melhor atributo por te dar mais dados durante a corrida.'
+    },
+    {
+      id: 'training02',
+      number: '02',
+      name: 'O Que cada Treino faz',
+      shortDesc: 'Descrição detalhada de todos os tipos de treinos.',
+      substeps: [
+        'Upgrades: Cada atributo possue níveis individuais de upgrades que melhoram um aspecto da corrida quando você chegar a uma certa quantia do atributo.',
+        'Treino Speed: Speed aumenta o valor máximo que seus dados conseguem rolar durante a corrida, iniciando em 1d2 ( 1 a 2 ) e podendo chegar a 1d7 ( 1 a 7 ). Os Upgrades de speed são: 1d3 em 200, 1d4 em 400, 1d5 em 600, 1d6 em 800 e 1d7 em 1000.',
+        'Treino Stamina: Stamina lhe concede dados extras no inicio da corrida, você pode gastar esses dados extras quando quiser durante a corrida inteira. Os Upgrades de stamina são: 1 dado extra em 400, 2 dados extras em 700 e 3 dados extras em 1000.',
+        'Treino Power: Power aumenta a quantidade de dados que você possuí e diminue os efeitos percurso ruim. Você inicia com 1 dado e pode chegar até 3 dados. Os Upgrades de power são: 2 dados em 400 e 3 dados em 800. Ignora a Pista Heavy em 800 e recebe +1 casa durante o Late em 1200.',
+        'Treino Guts: Guts aumenta a Face Mínima que você pode rolar em todos os seus dados rolados durante a corrida, habilidades que aumentam a Face Mínima somam a esse valor durante seus turnos efetivos. Os Upgrades de Guts são: +1 Face Mínima em 400, +2 Face Mínima em 800 e +3 Face Mínima em 1200. Recebe +1 Dueling em 600.',
+        'Treino Wits: Wits lhe consegue uma re-rolagem extra ao iniciar a corrida. Os Upgrades de Wits são: 1 re-rolagem extra em 600, 2 em 1000 e 3 em 1200.',
+        'Treino de Estilo: Cada estilo de corrida (Front, Pace, Late e End) lhe concede bônus. As Informações sobre esses bônus não se encontram disponíveis ainda. Caso consiga elas e tenha prova contatar capcatdev no discord.'
+      ],
+      priorityNote:
+        'Caso queira vencer corridas G1 contra bots consistentemente, a build é 600 Speed, x Stamina, 800 Power, 400 Guts e x Wits. Stamina e Wits ajuda mas não é obrigatório.'
     }
   ],
   phases: [
     {
-      id: 'start',
+      id: 'race01',
       number: '01',
-      name: 'Start Phase',
-      shortDesc: 'Ready all exhausted permanents, deploy a Guts, and resolve start-of-turn triggers.',
+      name: 'Como Correr',
+      shortDesc: 'Saiba como funciona a corrida e tudo que você pode fazer para interagir durante ela.',
       substeps: [
-        'Ready Step: Simultaneously ready (unexhaust) all Units, Powers, and Guts Conduits you control.',
-        'Conduit Step: Deploy the top card of your Guts Deck into your Conduit Zone (up to a maximum of 10 Conduits).',
-        'Upkeep Step: All "At the start of your turn" triggered abilities are placed on the stack and resolved in active-player order.'
+        'Canal # Corridas: Corridas só podem ser feitas no canal #corridas do discord oficial do jogo.',
+        'Use o comando $race: Para iniciar uma corrida você deve usar o comando $race seguido do tipo de corrida que deseja participar. Exemplo: $race debut. Os tipos de corridas são: Debut, G3, G2 e G1. O tipo de corrida determina a quantidade de carats, mood e pontos ranqueados que você irá receber ao final da corrida.',
+        'Diferentes Distâncias: Atualmente a corrida possuir diferentes distâncias não influência mecânicamente algum aspecto do jogo, sendo só mais turnos e mais oportunidades para rolar bem ou mal durante a corrida.'
       ],
       priorityNote:
-        'Players receive priority to cast Instant-speed Staminas after Upkeep triggers are placed on the stack.'
-    },
-    {
-      id: 'draw',
-      number: '02',
-      name: 'Draw Phase',
-      shortDesc: 'The active player draws 1 card from their Main Deck.',
-      substeps: [
-        'Standard Draw: The active player draws the top card of their Main Deck.',
-        'First-Turn Exception: The player going first skips their Draw Step on Turn 1.',
-        'Draw Triggers: Any abilities triggered by drawing a card resolve before proceeding to the Main Phase.'
-      ],
-      priorityNote:
-        'Both players gain a brief priority window after the card draw before transitioning to Main Phase.'
-    },
-    {
-      id: 'main',
-      number: '03',
-      name: 'Main Phase',
-      shortDesc: 'Play Units, Powers, and Sorcery/Instant Staminas, and activate Overclock abilities.',
-      substeps: [
-        'Play Cards: Spend Aether from your Conduits to deploy Units to the Frontline, place Powers in the Support Row, or cast Staminas.',
-        'Activate Abilities: Activate Overclock and other abilities on permanents you control.',
-        'Sequence Surge: Cast low-cost Staminas early in the Main Phase to unlock Surge bonuses on subsequent cards.'
-      ],
-      priorityNote:
-        'Active player holds full sorcery-speed priority whenever the stack is empty.'
-    },
-    {
-      id: 'combat',
-      number: '04',
-      name: 'Combat / Action Phase',
-      shortDesc: 'Declare attackers, assign Vanguard/standard blockers, and calculate simultaneous combat damage.',
-      substeps: [
-        'Declare Attackers: Exhaust any number of ready Units (that do not have summoning sickness) and assign them to attack the opposing Commander or an exhausted opposing Unit.',
-        'Declare Blockers: The defending player assigns ready Units to block attackers. If the defender controls a ready Vanguard unit, at least one attacker must be blocked by a Vanguard unit.',
-        'Combat Trick Window: Both players may cast Instant Staminas or activate combat abilities.',
-        'Damage Resolution: Attackers and blockers deal damage equal to their Attack simultaneously. Units with damage equal to or exceeding their Health are destroyed.'
-      ],
-      priorityNote:
-        'Combat damage does not use the stack—once the Combat Trick Window closes, damage is applied immediately.'
+        'Caso queira farmar Carats, corridas solo são a melhor opção. G1 te da 120 Carats ao vencer em primeiro lugar.'
     }
   ],
   deckbuilding: [
@@ -1301,8 +1279,8 @@ const RARITY_STYLES = {
 
 const MECHANIC_TYPE_STYLES = {
   'Evento de Corrida': 'bg-sky-950/80 text-sky-300 border-sky-700/60',
-  Triggered: 'bg-amber-950/80 text-amber-300 border-amber-700/60',
-  Activated: 'bg-emerald-950/80 text-emerald-300 border-emerald-700/60',
+  Cartas: 'bg-amber-950/80 text-amber-300 border-amber-700/60',
+  Comandos: 'bg-emerald-950/80 text-emerald-300 border-emerald-700/60',
   'Stamina Mechanic': 'bg-purple-950/80 text-purple-300 border-purple-700/60'
 };
 
@@ -2168,11 +2146,11 @@ function HomePortalView({ navigate }) {
                 Glossário de Mecânicas
               </h3>
               <p className="text-sm text-zinc-400 leading-relaxed">
-                Comprehensive definitions, reminder text, edge-case rulings, and card cross-references for all {KEYWORDS.length} core keywords.
+                Definições compreensivas, texto de lembrete, regras de casos extremos e referências cruzadas de cartas para todas as {KEYWORDS.length} palavras-chave principais.
               </p>
             </div>
             <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400">
-              Open Keyword Reference
+              Abrir Glossário de Mecânicas
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </div>
           </button>
@@ -2190,11 +2168,11 @@ function HomePortalView({ navigate }) {
                 Regras de Corrida e Treino
               </h3>
               <p className="text-sm text-zinc-400 leading-relaxed">
-                Learn win conditions, game setup, deckbuilding constraints, and the interactive 5-phase turn structure breakdown.
+                Aprenda condições de vitória, o que fazer antes da corrida, como treinar sua Uma e dicas em geral.
               </p>
             </div>
             <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-400">
-              Read Comprehensive Rules
+              Ler regras de Corrida e Treino
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </div>
           </button>
@@ -2505,16 +2483,20 @@ function CardDatabaseView({ navigate, initialSetFilter = 'All' }) {
       ) : viewMode === 'grid' ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {filteredCards.map((card) => (
-            <div
+            <a
               key={card.slug}
-              onClick={() => navigate(`/cards/${card.slug}`)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === 'Enter' && navigate(`/cards/${card.slug}`)}
-              className="group cursor-pointer transform hover:-translate-y-1 transition-transform duration-200"
+              href={`#/cards/${card.slug}`}
+              onClick={(e) => {
+                if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+                  return;
+                }
+                e.preventDefault();
+                navigate(`/cards/${card.slug}`);
+              }}
+              className="block group cursor-pointer focus:outline-none"
             >
-              <CardFrameIllustration card={card} compact />
-            </div>
+              <CardFrameIllustration card={card} />
+            </a>
           ))}
         </div>
       ) : (
@@ -2892,7 +2874,7 @@ function KeywordGlossaryView({ navigate, highlightedKeywordId = null }) {
     }
   }, [highlightedKeywordId]);
 
-  const mechanicTypes = ['Todos', 'Evento de Corrida', 'Corrida', 'Activated', 'Stamina Mechanic'];
+  const mechanicTypes = ['Todos', 'Evento de Corrida', 'Corrida', 'Comandos', 'Cartas'];
 
   const filteredKeywords = useMemo(() => {
     return KEYWORDS.filter((kw) => {

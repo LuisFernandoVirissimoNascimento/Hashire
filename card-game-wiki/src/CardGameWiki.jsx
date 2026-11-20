@@ -107,6 +107,30 @@ export const KEYWORDS = [
     edgeCases: [
       'Faz nada caso você só possua um dado.',
     ]
+  },
+  {
+    id: 'training_events',
+    name: 'Eventos de Treino',
+    type: 'Palavras',
+    reminderText:
+      'Essa mecânica foi documentada por observação e não é oficialmente confirmado como correto as informações abaixo.',
+    rulesExplanation:
+      'Todo treino possue uma chance de um evento acontecer baseado na quantidade de pessoas que estão treinando junto, indo de 0% a 25% de 1 Pessoa a 6 Pessoas. Os Seguintes eventos podem acontecer: +1 TP, 7-31 Carats, Carta R, Carta SR, Carta SSR, +10%-20% Mood ou Pontos de Atributo Extra.',
+    edgeCases: [
+      '',
+    ]
+  },
+  {
+    id: 'mood',
+    name: 'Mood',
+    type: 'Palavras',
+    reminderText:
+      'Essa mecânica foi documentada por observação e não é oficialmente confirmado como correto as informações abaixo.',
+    rulesExplanation:
+      'Mood afeta sua Uma de diversas maneiras, porém a única confirmada é que durante corridas você recebe +1 Re-rolagem inicial se estiver no mood Great. Os Moods seguem igual ao do jogo Uma Musume Pretty Derby, ou seja vai de Awful < Bad < Normal < Good < Great.',
+    edgeCases: [
+      '',
+    ]
   }
 ];
 
@@ -748,7 +772,7 @@ export const CARDS = [
     rarity: 'SR',
     image: '/cards/gold_city_SR.png',
     collectorNumber: '019',
-    keywords: [],
+    keywords: ['Late Start/Início Tardio'],
     cardText:
       'Late Surger, End Closer, Early\n+40 Wits +10 Speed\n Focus: Early, Anula o Late Start e +2 Casas',
     cardActionText:
@@ -1068,7 +1092,7 @@ export const CARDS = [
     rarity: 'SSR',
     image: '/cards/fine_motion_SSR.png',
     collectorNumber: '029',
-    keywords: [],
+    keywords: ['Late Start/Início Tardio'],
     cardText:
       'Front Runner, Pace Chaser, Late\n+60 Wits +20 Stamina\nCenter Stage: Early, anula o Late Start e +1 Casa por 2 turnos.',
     cardActionText:
@@ -1603,6 +1627,7 @@ const MECHANIC_TYPE_STYLES = {
   'Evento de Corrida': 'bg-sky-950/80 text-sky-300 border-sky-700/60',
   Cartas: 'bg-amber-950/80 text-amber-300 border-amber-700/60',
   Comandos: 'bg-emerald-950/80 text-emerald-300 border-emerald-700/60',
+  Palavras: 'bg-red-950/80 text-red-300 border-red-700/60',
   'Stamina Mechanic': 'bg-purple-950/80 text-purple-300 border-purple-700/60'
 };
 
@@ -2182,14 +2207,14 @@ function GlobalSearchBox({ navigate, placeholder = 'Procure por cartas, palavras
         <div className="absolute left-0 right-0 top-full mt-2 rounded-xl bg-zinc-900 border border-zinc-800 shadow-2xl overflow-hidden z-50">
           {!hasResults ? (
             <div className="p-4 text-sm text-zinc-400 text-center">
-              No matching cards or keywords found for <span className="text-zinc-200 font-medium">"{query}"</span>.
+              Nenhuma carta com <span className="text-zinc-200 font-medium">"{query}"</span>.
             </div>
           ) : (
             <div className="divide-y divide-zinc-800/80 max-h-96 overflow-y-auto">
               {results.keywords.length > 0 && (
                 <div className="p-2">
                   <div className="px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-zinc-500">
-                    Keywords & Mechanics
+                    Palavras-chave e Mecânicas
                   </div>
                   {results.keywords.map((kw) => (
                     <button
@@ -3196,7 +3221,7 @@ function KeywordGlossaryView({ navigate, highlightedKeywordId = null }) {
     }
   }, [highlightedKeywordId]);
 
-  const mechanicTypes = ['Todos', 'Evento de Corrida', 'Corrida', 'Comandos', 'Cartas'];
+  const mechanicTypes = ['Todos', 'Evento de Corrida', 'Corrida', 'Comandos', 'Cartas', 'Palavras'];
 
   const filteredKeywords = useMemo(() => {
     return KEYWORDS.filter((kw) => {
@@ -3356,7 +3381,8 @@ function KeywordGlossaryView({ navigate, highlightedKeywordId = null }) {
                       className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-950 hover:bg-cyan-950/70 border border-zinc-700 hover:border-cyan-500/60 text-xs font-medium text-zinc-200 hover:text-cyan-200 transition-colors cursor-pointer"
                     >
                       <span>{card.name}</span>
-                      <span className="font-mono text-[10px] text-zinc-500">({card.cost})</span>
+                      <span className="font-mono text-[10px] text-zinc-500">({card.type})</span>
+                      <span className="font-mono text-[10px] text-zinc-500">({card.rarity})</span>
                     </button>
                   ))}
                 </div>

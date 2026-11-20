@@ -44,12 +44,12 @@ export const GAME_META = {
   tagline:
     'Jogo em Bot de Discord de Uma Musume feito por ganimeru @Mambo\nWiki mantida por capcatdev @Luís',
   version: 'v1',
-  latestSet: '0.2',
+  latestSet: '0.3',
   latestSetCode: 'SHM',
-  releaseDate: '16/11/2026',
+  releaseDate: '19/11/2026',
   totalCardsInSet: 30,
   patchSummary:
-    'Patch v1 introduz as cartas que sairam no primeiro dia do jogo.',
+    'Pré Patch que mostra as novas cartas a serem lançadas',
   quickStats: [
     // { label: 'Criador', value: 'Mambo' },
     // { label: 'Suporte da Wiki', value: 'Luís' }
@@ -1124,6 +1124,326 @@ export const CARDS = [
         note: 'Adicionada ao banco de dados inicial das cartas'
       }
     ]
+  },
+  {
+    slug: 'mejiro_dober',
+    name: 'Mejiro Dober',
+    type: 'Wits',
+    rarity: 'SSR',
+    image: '/cards/mejiro_dober_SSR.png',
+    collectorNumber: '031',
+    keywords: [],
+    cardText:
+      'Late Surger, Late\n+60 Wits +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
+    cardActionText:
+      '**Lama no Rosto**\n__Correndo de Late Surger:__\n**Sempre no Late:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Early:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Mira Verdadeira**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1.1',
+        date: '19/11/2026',
+        note: 'Adicionada ao banco de dados com a revelação do update 1.0 do jogo.'
+      }
+    ]
+  },
+  {
+    slug: 'air_groove',
+    name: 'Air Groove',
+    type: 'Wits',
+    rarity: 'SSR',
+    image: '/cards/air_groove_SSR.png',
+    collectorNumber: '032',
+    keywords: [],
+    cardText:
+      'Front Runner, Pace Chaser, Early\n+60 Wits +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
+    cardActionText:
+      '**Lama no Rosto**\n__Correndo de Front Runner ou Pace Chaser:__\n**Sempre no Early:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Ordem da Imperadora**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1.1',
+        date: '19/11/2026',
+        note: 'Adicionada ao banco de dados com a revelação do update 1.0 do jogo.'
+      }
+    ]
+  },
+  {
+    slug: 'grass_wonder',
+    name: 'Grass Wonder',
+    type: 'Guts',
+    rarity: 'SSR',
+    image: '/cards/grass_wonder_SSR.png',
+    collectorNumber: '033',
+    keywords: [],
+    cardText:
+      'End Closer Early\n+60 Wits +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
+    cardActionText:
+      '**Lama no Rosto**\n__Correndo de End Closer:__\n**Sempre no Early:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Graça Serena**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1.1',
+        date: '19/11/2026',
+        note: 'Adicionada ao banco de dados com a revelação do update 1.0 do jogo.'
+      }
+    ]
+  },
+  {
+    slug: 'twin_turbo',
+    name: 'Twin Turbo',
+    type: 'Guts',
+    rarity: 'SSR',
+    image: '/cards/twin_turbo_SSR.png',
+    collectorNumber: '034',
+    keywords: [],
+    cardText:
+      'Front Runner, Mid\n+60 Wits +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
+    cardActionText:
+      '**Lama no Rosto**\n__Correndo de Front Runner:__\n**Sempre no Mid:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +1 Dado e +3 Casas\n**Caiu no Early ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Aceleração Total**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1.1',
+        date: '19/11/2026',
+        note: 'Adicionada ao banco de dados com a revelação do update 1.0 do jogo.'
+      }
+    ]
+  },
+  {
+    slug: 'vodka',
+    name: 'Vodka',
+    type: 'Power',
+    rarity: 'SSR',
+    image: '/cards/vodka_SSR.png',
+    collectorNumber: '035',
+    keywords: [],
+    cardText:
+      'Late Surger, End Closer, Late\n+60 Wits +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
+    cardActionText:
+      '**Lama no Rosto**\n__Correndo de Late Surger ou End Closer:__\n**Sempre no Late:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Early:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Full Throttle**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1.1',
+        date: '19/11/2026',
+        note: 'Adicionada ao banco de dados com a revelação do update 1.0 do jogo.'
+      }
+    ]
+  },
+  {
+    slug: 'oguri_cap',
+    name: 'Oguri Cap',
+    type: 'Power',
+    rarity: 'SSR',
+    image: '/cards/oguri_cap_SSR.png',
+    collectorNumber: '036',
+    keywords: [],
+    cardText:
+      'Late Surger, Mid\n+60 Power +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
+    cardActionText:
+      '**Lama no Rosto**\n__Correndo de Late Surger:__\n**Sempre no Mid:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +1 Dado e +3 Casas\n**Caiu no Late ou no Early:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Nunca Desista**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1.1',
+        date: '19/11/2026',
+        note: 'Adicionada ao banco de dados com a revelação do update 1.0 do jogo.'
+      }
+    ]
+  },
+  {
+    slug: 'gold_ship',
+    name: 'Gold Ship',
+    type: 'Stamina',
+    rarity: 'SSR',
+    image: '/cards/gold_ship_SSR.png',
+    collectorNumber: '037',
+    keywords: [],
+    cardText:
+      'End Closer, Late\n+60 Power +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
+    cardActionText:
+      '**Lama no Rosto**\n__Correndo de End Closer:__\n**Sempre no Late:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Early:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Qualquer Coisa Vale**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1.1',
+        date: '19/11/2026',
+        note: 'Adicionada ao banco de dados com a revelação do update 1.0 do jogo.'
+      }
+    ]
+  },
+  {
+    slug: 'mejiro_mcqueen',
+    name: 'Mejiro Mcqueen',
+    type: 'Stamina',
+    rarity: 'SSR',
+    image: '/cards/mejiro_mcqueen_SSR.png',
+    collectorNumber: '038',
+    keywords: [],
+    cardText:
+      'Pace Chaser, Early\n+60 Stamina +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
+    cardActionText:
+      '**Lama no Rosto**\n__Correndo de Pace Chaser:__\n**Sempre no Early:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Orgulho dos Mejiro**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1.1',
+        date: '19/11/2026',
+        note: 'Adicionada ao banco de dados com a revelação do update 1.0 do jogo.'
+      }
+    ]
+  },
+  {
+    slug: 'tokai_teio',
+    name: 'Tokai Teio',
+    type: 'Speed',
+    rarity: 'SSR',
+    image: '/cards/tokai_teio_SSR.png',
+    collectorNumber: '039',
+    keywords: [],
+    cardText:
+      'Pace Chaser, Mid\n+60 Speed +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
+    cardActionText:
+      '**Lama no Rosto**\n__Correndo de Pace Chaser:__\n**Sempre no Mid:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +1 Dado e +3 Casas\n**Caiu no Early ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Passo do Imperador**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1.1',
+        date: '19/11/2026',
+        note: 'Adicionada ao banco de dados com a revelação do update 1.0 do jogo.'
+      }
+    ]
+  },
+  {
+    slug: 'silence_suzuka',
+    name: 'Silence Suzuka',
+    type: 'Speed',
+    rarity: 'SSR',
+    image: '/cards/silence_suzuka_SSR.png',
+    collectorNumber: '040',
+    keywords: [],
+    cardText:
+      'Front Runner, Early\n+60 Speed +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
+    cardActionText:
+      '**Lama no Rosto**\n__Correndo de Front Runner:__\n**Sempre no Early:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Liderança Silenciosa**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+    flavorText:
+      '""',
+    rulings: [
+      {
+        question:
+          'Exemplo de Pergunta Frequente',
+        answer:
+          'Quando muitas perguntas forem feitas sobre essa carta em especifico, será adicionado aqui. Avisar capcatdev no discord caso uma pergunta frequente nova apareça.'
+      }
+    ],
+    interactionNotes:
+      '',
+    patchHistory: [
+      {
+        version: 'v1.1',
+        date: '19/11/2026',
+        note: 'Adicionada ao banco de dados com a revelação do update 1.0 do jogo.'
+      }
+    ]
   }
 ];
 
@@ -1140,7 +1460,7 @@ export const RULES = {
 
       'G3 : \n1° : 40 Carats, 0% Mood e +0 Pontos.\n2° : 20 Carats, 0% Mood e +0 Pontos.\n3° : 14 Carats, 0% Mood e +0 Pontos.\n4° : 0 Carats, 0% Mood e +0 Pontos.\n5° : 0 Carats, 0% Mood e +0 Ponto.\n6° : 6 Carats, 0% Mood e -0 Ponto.\n7° : 4 Carats, 0% Mood e -0 Pontos.\n8° : 4 Carats, 0% Mood e -0 Pontos.\n9° : 4 Carats, -10% Mood e -0 Pontos.',
 
-      'G2 : \n1° : 70 Carats, 0% Mood e +10 Pontos.\n2° : 0 Carats, 0% Mood e +0 Pontos.\n3° : 25 Carats, 0% Mood e +0 Pontos.\n4° : 0 Carats, 0% Mood e +0 Pontos.\n5° : 0 Carats, 0% Mood e +0 Ponto.\n6° : 0 Carats, 0% Mood e -0 Ponto.\n7° : 0 Carats, 0% Mood e -0 Pontos.\n8° : 0 Carats, 0% Mood e -0 Pontos.\n9° : 0 Carats, -10% Mood e -0 Pontos.',
+      'G2 : \n1° : 70 Carats, 0% Mood e +10 Pontos.\n2° : 0 Carats, 0% Mood e +0 Pontos.\n3° : 25 Carats, 0% Mood e +0 Pontos.\n4° : 0 Carats, 0% Mood e +0 Pontos.\n5° : 0 Carats, 0% Mood e +0 Ponto.\n6° : 0 Carats, 0% Mood e -0 Ponto.\n7° : 7 Carats, 0% Mood e -0 Pontos.\n8° : 7 Carats, 0% Mood e -0 Pontos.\n9° : 7 Carats, -10% Mood e -0 Pontos.',
 
       'G1 : \n1° : 120 Carats, 0% Mood e +60 Pontos.\n2° : 60 Carats, 0% Mood e +36 Pontos.\n3° : 42 Carats, 0% Mood e +24 Pontos.\n4° : 30 Carats, 0% Mood e +15 Pontos.\n5° : 24 Carats, 0% Mood e +6 Ponto.\n6° : 18 Carats, 0% Mood e -6 Ponto.\n7° : 12 Carats, 0% Mood e -12 Pontos.\n8° : 12 Carats, 0% Mood e -3 Pontos.\n9° : 12 Carats, -10% Mood e -24 Pontos.',
 
@@ -1201,7 +1521,9 @@ export const RULES = {
         'Treino Power: Power aumenta a quantidade de dados que você possuí e diminue os efeitos percurso ruim. Você inicia com 1 dado e pode chegar até 3 dados. Os Upgrades de power são: 2 dados em 400 e 3 dados em 800. Ignora a Pista Heavy em 800 e recebe +1 casa durante o Late em 1200.',
         'Treino Guts: Guts aumenta a Face Mínima que você pode rolar em todos os seus dados rolados durante a corrida, habilidades que aumentam a Face Mínima somam a esse valor durante seus turnos efetivos. Os Upgrades de Guts são: +1 Face Mínima em 400, +2 Face Mínima em 800 e +3 Face Mínima em 1200. Recebe +1 Dueling em 600.',
         'Treino Wits: Wits lhe consegue uma re-rolagem extra ao iniciar a corrida. Os Upgrades de Wits são: 1 re-rolagem extra em 600, 2 em 1000 e 3 em 1200.',
-        'Treino de Estilo: Cada estilo de corrida (Front, Pace, Late e End) lhe concede bônus. As Informações sobre esses bônus não se encontram disponíveis ainda. Caso consiga elas e tenha prova contatar capcatdev no discord.'
+        'Treino de Estilo: Cada estilo de corrida (Front, Pace, Late e End) lhe concede bônus. As Informações sobre esses bônus não se encontram disponíveis ainda. Caso consiga elas e tenha prova contatar capcatdev no discord.',
+        'Treino de Front: Ao atingir aptidão A ganha +2 Casa no early.',
+        'Treino de End: Ao atingir aptidão A ganha +3 Casa no late.'
       ],
       priorityNote:
         'Caso queira vencer corridas G1 contra bots consistentemente, a build é 600 Speed, x Stamina, 800 Power, 400 Guts e x Wits. Stamina e Wits ajuda mas não é obrigatório.'

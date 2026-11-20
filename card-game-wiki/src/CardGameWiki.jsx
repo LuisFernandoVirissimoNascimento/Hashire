@@ -1136,7 +1136,7 @@ export const CARDS = [
     cardText:
       'Late Surger, Late\n+60 Wits +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
     cardActionText:
-      '**Lama no Rosto**\n__Correndo de Late Surger:__\n**Sempre no Late:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Early:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Mira Verdadeira**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+      '**Lama no Rosto**\n__Correndo de Late Surger:__\n**Sempre no Late:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Early:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Aim True**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
     flavorText:
       '""',
     rulings: [
@@ -1168,7 +1168,7 @@ export const CARDS = [
     cardText:
       'Front Runner, Pace Chaser, Early\n+60 Wits +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
     cardActionText:
-      '**Lama no Rosto**\n__Correndo de Front Runner ou Pace Chaser:__\n**Sempre no Early:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Ordem da Imperadora**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+      '**Lama no Rosto**\n__Correndo de Front Runner ou Pace Chaser:__\n**Sempre no Early:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Empress s Order**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
     flavorText:
       '""',
     rulings: [
@@ -1200,7 +1200,7 @@ export const CARDS = [
     cardText:
       'End Closer Early\n+60 Wits +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
     cardActionText:
-      '**Lama no Rosto**\n__Correndo de End Closer:__\n**Sempre no Early:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Graça Serena**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+      '**Lama no Rosto**\n__Correndo de End Closer:__\n**Sempre no Early:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Serene Grace**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
     flavorText:
       '""',
     rulings: [
@@ -1232,7 +1232,7 @@ export const CARDS = [
     cardText:
       'Front Runner, Mid\n+60 Wits +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
     cardActionText:
-      '**Lama no Rosto**\n__Correndo de Front Runner:__\n**Sempre no Mid:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +1 Dado e +3 Casas\n**Caiu no Early ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Aceleração Total**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+      '**Lama no Rosto**\n__Correndo de Front Runner:__\n**Sempre no Mid:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +1 Dado e +3 Casas\n**Caiu no Early ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Full Throttle**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
     flavorText:
       '""',
     rulings: [
@@ -1264,7 +1264,7 @@ export const CARDS = [
     cardText:
       'Late Surger, End Closer, Late\n+60 Wits +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
     cardActionText:
-      '**Lama no Rosto**\n__Correndo de Late Surger ou End Closer:__\n**Sempre no Late:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Early:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Full Throttle**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+      '**Lama no Rosto**\n__Correndo de Late Surger ou End Closer:__\n**Sempre no Late:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Early:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Duel Ace**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
     flavorText:
       '""',
     rulings: [
@@ -1296,7 +1296,7 @@ export const CARDS = [
     cardText:
       'Late Surger, Mid\n+60 Power +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
     cardActionText:
-      '**Lama no Rosto**\n__Correndo de Late Surger:__\n**Sempre no Mid:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +1 Dado e +3 Casas\n**Caiu no Late ou no Early:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Nunca Desista**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+      '**Lama no Rosto**\n__Correndo de Late Surger:__\n**Sempre no Mid:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +1 Dado e +3 Casas\n**Caiu no Late ou no Early:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Never Give Up**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
     flavorText:
       '""',
     rulings: [
@@ -1328,7 +1328,7 @@ export const CARDS = [
     cardText:
       'End Closer, Late\n+60 Power +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
     cardActionText:
-      '**Lama no Rosto**\n__Correndo de End Closer:__\n**Sempre no Late:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Early:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Qualquer Coisa Vale**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+      '**Lama no Rosto**\n__Correndo de End Closer:__\n**Sempre no Late:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Late:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Early:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Anything Goes**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
     flavorText:
       '""',
     rulings: [
@@ -1360,7 +1360,7 @@ export const CARDS = [
     cardText:
       'Pace Chaser, Early\n+60 Stamina +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
     cardActionText:
-      '**Lama no Rosto**\n__Correndo de Pace Chaser:__\n**Sempre no Early:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Orgulho dos Mejiro**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+      '**Lama no Rosto**\n__Correndo de Pace Chaser:__\n**Sempre no Early:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Pride of the Mejiro**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
     flavorText:
       '""',
     rulings: [
@@ -1392,7 +1392,7 @@ export const CARDS = [
     cardText:
       'Pace Chaser, Mid\n+60 Speed +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
     cardActionText:
-      '**Lama no Rosto**\n__Correndo de Pace Chaser:__\n**Sempre no Mid:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +1 Dado e +3 Casas\n**Caiu no Early ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Passo do Imperador**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+      '**Lama no Rosto**\n__Correndo de Pace Chaser:__\n**Sempre no Mid:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Mid:** +1 Dado e +3 Casas\n**Caiu no Early ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Emperor s Step**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
     flavorText:
       '""',
     rulings: [
@@ -1424,7 +1424,7 @@ export const CARDS = [
     cardText:
       'Front Runner, Early\n+60 Speed +20 Power\nLane Legerdemain: Late, +2 Casas por 2 turnos.',
     cardActionText:
-      '**Lama no Rosto**\n__Correndo de Front Runner:__\n**Sempre no Early:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Liderança Silenciosa**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
+      '**Lama no Rosto**\n__Correndo de Front Runner:__\n**Sempre no Early:** +1 Dado e +3 Casas - Dispara sozinha no 1° turno da corrida\n__Em Outro Estilo:__ etapa sorteada na largada (1 em 3)\n**Caiu no Early:** +1 Dado e +3 Casas\n**Caiu no Mid ou no Late:** +2 Casas\n★★★★★★★★★★★★★\n**Ultimate - Silent Lead**\n★☆☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 2 vezes).\n★★☆ - Fora do Early, colada atrás de uma rival (até 1 casa): +1 Casa (até 4 vezes). Dueling: +2 Casas.\n★★★ - Fora do Early, colada atrás de uma rival (até 1 casa): +2 Casas (até 4 vezes). Dueling: +2 Casas.',
     flavorText:
       '""',
     rulings: [
